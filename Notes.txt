@@ -1,0 +1,11 @@
+----- install to run Auto Laod Icons ------
+npm install --save-dev nodemon
+
+npx nodemon
+---------------------------------------------
+{
+    "watch": ["src"],
+    "ext": "js",
+    "exec": "cd src && cd data && node IconGener.js"
+  }
+  

@@ -1,0 +1,133 @@
+@import './vars.scss';
+
+.page-title{
+  font-family: "Sen", sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: $Dark;
+  margin: 8px 0 20px;
+}
+
+.main_box{
+  width: 100%;
+  max-width: 840px;
+  margin: 12px auto;
+  padding: 16px 20px;
+  background: $White;
+
+  .profile-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+}
+.form-box{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.section-box{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  min-width: 400px;
+  padding: 32px;
+  background-color: $G_01;  
+}
+.ds_title{
+  font-size: 24px;
+  font-weight: 700;
+  color: $Dark;
+  margin-bottom: 12px;
+}
+
+.btn-row{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Small icon-only button for bottom connection test */
+.button.icon{
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 48px;
+}
+
+.button.icon .svg-icon{
+  width: 18px;
+  height: 18px;
+}
+
+.tab.selected{
+  background: $Orange;
+  color: $White;
+  border-color: $Orange;
+}
+
+.auth-form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+// .profile-field{ margin-bottom: 16px; }
+.profile-field { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+ }
+
+.profile-avatar{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.profile-avatar-fallback{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: $G_01;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid $G_04;
+  color: $G_08;
+  font-size: 14px;
+  text-align: center;
+  margin: 0 auto;
+  display: none; /* toggled inline when needed */
+}
+
+.file-input{
+  padding: 8px;
+  border: 1px solid $G_05;
+  border-radius: 8px;
+  width: 100%;
+}
+
+/* Buttons variations used in this page */
+// .sec{ background: $G_02; color: $Dark; }
+.lined{ background: transparent; border: 1px solid $G_05; }
+
+/* Status styles */
+.status{ border-width:2px; }
+.status--success{ background:#f0fdf4; border-color:#22c55e; color:#15803d; }
+.status--error{ background:#fef2f2; border-color:#ef4444; color:#dc2626; }
+.status--info{ background:#f8f9fa; border-color:#6b7280; color:#374151; }
+
+@media (max-width: 640px){
+  .main_box{ padding: 12px 14px; border-radius: 12px; }
+  .page-title{ font-size: 28px; }
+  .ds_title{ font-size: 22px; }
+}

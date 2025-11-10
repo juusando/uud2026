@@ -1,0 +1,68 @@
+$Green:       #00DEA3;
+$Dark:        #261147;
+$Orange:      #FF6A56;
+$Yellow:      #FEA300;
+$Pink:        #FF3A81;
+$Purple:      #9648DE;
+$Blue:        #15A6F8;
+$Text:        #513C6A;
+$Red:         #D90D3E;
+
+$White:      #FFFFFF;
+$W_20:       #ffffff31;
+$G_00:       #F9FAFC;
+$G_01:       #F5F6FA;
+$G_02:       #F0F0F9;
+$G_03:       #ebebf9;
+$G_04:       #DEDEEB;
+$G_05:       #CCCEDE;
+$G_06:       #BBBDD6;
+$G_07:       #ABADC8;
+$G_08:       #878BBA;
+$G_09:       #6c647f;
+$G_10:        #665679;
+
+
+
+// @import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
+
+
+*{
+    color: inherit;
+    margin: 0;
+  font-family: "Sen", sans-serif;
+  font-size: 18px;    
+    box-sizing: border-box;
+
+}
+
+body{
+    font-family: "Sen", sans-serif;
+    font-weight: 400;
+    color: $Text ;
+}
+a{
+    text-decoration: none;
+}
+
+svg{
+    --size: 32px;
+    width: var(--size);
+    height: var(--size);
+    stroke-width: 1.5px;
+}
+
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    color: $Dark;
+    padding: 24px;
+    font-size: 32px;
+    text-align: center;
+
+}
+

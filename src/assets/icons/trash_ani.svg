@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Keyshape -->
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <style>
+@keyframes a0_t { 0% { transform: translate(6.209677px,20.725806px) rotate(0deg) translate(-6.209677px,-20.725806px); animation-timing-function: cubic-bezier(0,0,0.22,0.9); } 100% { transform: translate(6.209677px,22.725806px) rotate(0deg) translate(-6.209677px,-20.725806px); } }
+@keyframes a0_d { 0% { d: path('M14,8.278L14,17.25M10,8.278L10,17.25M6,8.278C6,8.278,18,8.278,18,8.278L18,18.888C18,20.056,17.105,21,16,21C16,21,8,21,8,21C6.895,21,6,20.055,6,18.889L6,8.278Z'); animation-timing-function: cubic-bezier(0,0,0.22,0.9); } 100% { d: path('M14,9.45353L14,18.25M10,9.45353L10,18.25M6,8.278C10.1259,9.82938,14.1323,9.90824,18,8.278L18,18.6194C18,19.7874,17.2248,20.5993,16,20.9713C13.3987,21.6123,10.7347,21.6399,8,20.9713C6.81874,20.6404,6,19.7864,6,18.6204L6,8.278Z'); } }
+@keyframes a1_t { 0% { transform: translate(4.395161px,7.862903px) rotate(0deg) translate(-4.395161px,-7.862903px); animation-timing-function: cubic-bezier(0,0,0.22,0.9); } 100% { transform: translate(4.443563px,7.395317px) rotate(-12.086026deg) translate(-4.395161px,-7.862903px); } }
+@keyframes a2_t { 0% { transform: translate(12.028465px,8.30628px); animation-timing-function: cubic-bezier(0,0,0.22,0.9); } 100% { transform: translate(12.028465px,9.781369px); } }
+@keyframes a2_ry { 0% { ry: 0.0133144px; animation-timing-function: cubic-bezier(0,0,0.22,0.9); } 100% { ry: 1.60453px; } }
+    </style>
+    <path stroke=" currentColor" stroke-linecap="round" stroke-linejoin="round" d="M14,8.278L14,17.25M10,8.278L10,17.25M6,8.278L18,8.278L18,18.888C18,20.056,17.105,21,16,21L8,21C6.895,21,6,20.055,6,18.889L6,8.278Z" transform="translate(6.20968,20.7258) translate(-6.20968,-20.7258)" style="animation: 0.5s linear both a0_t, 0.5s linear both a0_d;"/>
+    <path stroke=" currentColor" stroke-linecap="round" stroke-linejoin="round" d="M14,8.278M10,8.278M6,8.278L18,8.278L6,8.278ZM4,8.278L20,8.278L20,7.222C20,6.056,19.105,5.112,18,5.112L6,5.112C4.895,5.112,4,6.056,4,7.222L4,8.278ZM9,5.11L15,5.11L15,4C15,3.44772,14.5523,3,14,3L10,3C9.44772,3,9,3.44772,9,4L9,5.111Z" transform="translate(4.39516,7.8629) translate(-4.39516,-7.8629)" style="animation: 0.5s linear both a1_t;"/>
+    <ellipse rx="5.98605" ry="0.0133144" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(12.175,10.0669) translate(-0.146551,-1.76065)" style="animation: 0.5s linear both a2_t, 0.5s linear both a2_ry;"/>
+</svg>

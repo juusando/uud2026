@@ -1,0 +1,1275 @@
+@import "../styles/vars.scss";
+
+
+// - - - - - - - - - - -  Design System - - - - - - - - - -
+.page-title {
+  font-size: clamp(28px, 4vw, 34px);
+  color: $Orange;
+
+}
+
+.main_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 80%;
+  max-width: 560px;
+  padding: 16px 32px 32px;
+  margin: 12px 0;
+  background-color: $G_00;
+  border-radius: 16px;
+  // border: solid 2px $G_02;
+
+  .ds_title {
+    font-size: 27px;
+    color: $Orange;
+  }
+}
+
+
+// - - - - - - - - - - - BUTTON TEMP - - - - - - - - - - 
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  border-radius: 10px;
+  color: $White;
+  border: solid 2px $Orange;
+  cursor: pointer;
+  position: relative;
+  background-color: $Orange;
+  width: 100%;
+  height: 52px;
+  padding: 0 8px;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  line-height: 100%;
+
+  span {
+    margin: 0 8px;
+  }
+
+  .svg-icon {
+    width: 26px;
+    height: auto;
+    min-width: 26px;
+    transition: fill 0.3s ease;
+  }
+
+  &:hover {
+    background-color: $Dark;
+    border: solid 2px $Dark;
+    color: $White;
+    transition: all 0.2s ease;
+
+    .svg-icon {
+      color: $White;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 54px;
+  }
+
+}
+// - - - - - - - - - SMALL
+.small {
+  height: 40px;
+  span{
+    font-size: 16px;
+  }
+  @media screen and (max-width: 768px) {
+    height: 42px;
+  }
+}
+
+// - - - - - - - - LINED BUTTON 
+.lined {
+  color: $Dark;
+  background-color: transparent;
+  border: solid 2px $Dark;
+  color: $Dark;
+}
+
+// - - - - - - SECONDARY BUTTON 
+.sec {
+  color: $Dark;
+  background-color: transparent;
+  border: solid 2px $Orange;
+  color: $Orange;
+}
+
+// - - - - - -- NAVIGATION BUTTON
+.nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+  border: none;
+  height: auto;
+  width: fit-content;
+  background-color: transparent;
+  border: solid 2px transparent;
+  color: $Dark;
+  padding: 4px;
+
+  .svg-icon {
+    width: 36px;
+    height: 36px;
+    stroke-width: 1.3px;
+    border: solid 2px transparent;
+  }
+
+  &:hover {
+    color: $Orange;
+    background-color: $G_02;
+    border: 2px solid transparent;
+
+    .svg-icon {
+      color: $Orange;
+      border: solid 2px transparent;
+    }
+  }
+}
+
+// - - - - - - - - - - - VALIDATION MESSAGES - - - - - - - - - - 
+.validation-message {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+
+  .spinner, .check, .cross {
+    font-size: 16px;
+    min-width: 16px;
+  }
+
+  &.checking {
+    color: $G_06;
+    background-color: $G_01;
+    border: 1px solid $G_02;
+    
+    .spinner {
+      animation: spin 1s linear infinite;
+    }
+  }
+
+  &.success {
+    color: #22c55e;
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    
+    .check {
+      color: #22c55e;
+    }
+  }
+
+  &.error {
+    color: #ef4444;
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    
+    .cross {
+      color: #ef4444;
+    }
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+// - - - - - - - - -  - INPUTS TEMP - - - - - - - - -
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 460px;
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  gap: 8px;
+}
+
+.input-icon-box {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 2px solid $G_04;
+  border-radius: 12px;
+  padding: 0 12px;
+  height: 52px;
+  transition: all 0.3s;
+  background-color: $White;
+  width: 100%;
+  box-sizing: border-box;
+
+  &.focused {
+    border-color: $Blue;
+
+    .icon {
+      color: $Blue;
+    }
+  }
+
+    &.error {
+    border-color: $Red;
+    .icon {
+      color: $Red;
+    }
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    color: $G_07;
+
+    svg {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  .input-wrapper {
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+
+  .input-prefix {
+    color: $Blue;
+  }
+
+  .input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: $Dark;
+    width: 100%;
+
+    &.no-match {
+      color: $Red;
+    }
+
+    &::placeholder {
+      color: $G_07;
+      transition: all 0.3s;
+    }
+
+    &:focus::placeholder {
+      color: $G_05
+    }
+
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 56px;
+  }
+}
+    .char-counter{
+      color: $G_06;
+    }
+// - - - - - - - WITH LABEL
+.with-label {
+  flex-direction: column;
+  align-items: start;
+
+  .input-label {
+    color: $Dark;
+    text-align: left;
+    padding: 0 16px;
+    text-wrap: nowrap;
+  }
+}
+
+// - - - - - - - - - COMPACT FIELD 
+.compact-field-hero {
+  position: relative;
+  width: 100%;
+
+  .compact-button {
+    position: absolute;
+    right: 2px;
+    bottom: 0;
+    z-index: 1;
+
+    .button {
+      margin: 2px 0;
+      border-radius: 0 10px 10px 0;
+      height: 48px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: static;
+    width: 100%;
+
+    .compact-button {
+      position: static;
+
+      .button {
+        margin: 0;
+        border-radius: 10px;
+        height: 54px;
+      }
+    }
+  }
+}
+
+
+// - - - - - - - - - - - - Title - - - - - - - - - - - - 
+.big-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  height: auto;
+  font-size: 26px;
+  font-weight: 500;
+  color: $Orange;
+
+  svg {
+    width: 32px;
+  }
+}
+
+// - - - - - - - - - - - - - Drop-Down - - - - - - - - - -
+.input-icon-box {
+  position: relative;
+
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: $White;
+    border: 2px solid $Blue;
+    border-radius: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    margin-top: 4px;
+    padding: 8px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    text-align: left;
+  }
+
+  .dropdown-option {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 17px;
+    color: $Dark;
+    display: flex;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $G_01;
+      color: $Dark;
+    }
+  }
+
+  .selected-option {
+    background-color: $G_01;
+    color: $Dark;
+  }
+
+  .right-icon {
+    cursor: pointer;
+  }
+}
+
+// - - - - - - -- - -  Check Box - - - - - - - - - - 
+
+.checkbox-icon-box {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: $Orange;
+  }
+
+  .custom-checkbox {
+    margin-right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid $G_04;
+    color: $G_04;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    padding: 4px;
+    background-color: $White;
+
+    svg {
+      width: 100%;
+      stroke-width: 3px;
+    }
+
+    &.checked {
+      background-color: $Orange;
+      border-color: $Orange;
+      color: $White;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  .checkbox-input {
+    cursor: pointer;
+  }
+
+}
+
+// - - - - - - - - - TAGS - - - - - - - - - - - - 
+.tag-container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  .tag {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 4px;
+    width: auto;
+    height: 40px;
+    border: 2px solid $Orange;
+    color: $Orange;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &.selected {
+      background-color: $Orange;
+      color: $White;
+    }
+
+    svg {
+      height: 24px;
+      width: 24px;
+    }
+
+    @media screen and (max-width: 768px) {
+      height: 48px;
+    }
+  }
+
+}
+
+// - - - - - - - - - TABS - - - - - - - - - - - - 
+.tab-container {
+  display: flex;
+  flex-direction: row;
+  height: 44px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 2px solid $Orange;
+
+  .tab {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 12px;
+    width: auto;
+    color: $Orange;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &.selected {
+      background-color: $Orange;
+      color: $White;
+    }
+
+    &:hover {
+      background-color: $Orange;
+      color: $White;
+    }
+
+    svg {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 50px;
+  }
+}
+
+// - - - - - - - - -  TEXTAREA - - - - - - - - - - 
+
+.textarea-icon-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px;
+
+  .input-top-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+
+    .left-side {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      svg {
+        width: 28px;
+        height: 28px;
+        color: $G_06;
+      }
+
+      .textarea-title {
+        color: $G_07;
+        transition: color 0.3s;
+      }
+
+      .focused {
+        color: $Blue;
+         svg {
+          color: $Blue;
+        }
+      }
+    }
+
+    .char-counter {
+      font-size: 17px;
+    }
+
+    .char-counter.red {
+      color: $Red;
+    }
+  }
+
+  .input {
+    width: 100%;
+    height: 200px;
+    border: 2px solid $G_04;
+    border-radius: 12px;
+    padding: 12px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+
+    &::placeholder {
+      color: $G_06;
+      font-style: italic;
+    }
+
+    &:focus {
+      border-color: $Blue;
+      outline: none;
+    }
+
+    &:focus~.input-top-box .textarea-title,
+    &:focus~.input-top-box .left-icon {
+      color: $Blue;
+    }
+  }
+}
+
+.compact-textarea {
+  position: relative;
+
+  .input-top-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    background-color: $White;
+    margin: 4px;
+    padding: 0 12px 0 8px;
+    display: flex;
+    align-items: center
+  }
+
+  .input {
+    padding-top: 54px;
+  }
+}
+
+// - - - - - - - -  Country Dropdown - - - - - - - 
+
+.input-icon-box {
+  position: relative;
+  width: 100%;
+
+  .input-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: border-color 0.3s;
+
+    svg {
+      width: 28px;
+      height: 28px;
+      color: $G_06;
+    }
+
+    &.focused {
+      border-color: $Orange;
+    }
+
+    .input {
+      border: none;
+      outline: none;
+      flex: 1;
+      padding: 5px;
+      color: $Dark;
+
+      &.no-match {
+        color: $Red;
+      }
+
+      &::placeholder {
+        color: $G_06;
+      }
+    }
+
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 104%;
+    left: 0;
+    right: 0;
+    z-index: 10; // Keep dropdown above other elements
+    background-color: $White;
+    border: 2px solid $Blue;
+    border-radius: 16px;
+    max-height: 200px; // Limit the height of the dropdown
+    overflow-y: auto; // Scroll if there are too many options
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); // Add shadow for better visibility
+
+    .dropdown-option {
+      display: flex; // Align items
+      align-items: center;
+      gap: 12px;
+      padding: 10px; // Space inside options
+      cursor: pointer; // Change cursor on hover
+      color: $Dark; // Default option color
+
+      &.selected {
+        background-color: $G_01; // Highlight selected option
+      }
+
+      svg {
+        width: 28px;
+        height: 28px;
+        border-radius: 24px;
+      }
+
+      &:hover {
+        background-color: $G_02; // Highlight on hover
+      }
+
+      &.highlighted {
+        background-color: $G_02;
+        color: white; // Highlighted text color
+      }
+    }
+  }
+
+  .flag-icon-in-input {
+    width: 28px; // Adjust flag size
+    height: 28px; // Adjust flag size
+    border-radius: 20px;
+  }
+}
+
+// - - - - - - - - - - - - POPUP - - - - - - - - - - - -
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($Dark, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  .popup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background-color: $White;
+    border-radius: 20px;
+    padding: 32px 40px;
+    width: 90%;
+    max-width: 460px;
+    position: relative;
+
+    @media screen and (max-width: 460px) {
+      padding: 24px;
+
+      .popup-illus {
+        width: 120px;
+      }
+    }
+  }
+}
+
+.popup-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.popup-illus {
+  width: 140px;
+  height: auto;
+  stroke-width: 2.4px;
+  color: $Orange;
+}
+
+.popup-title {
+  font-size: 26px;
+  font-weight: 500;
+  color: $Orange;
+  flex: 1;
+}
+
+.popup-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  color: $G_05;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    transition: color 0.2s ease;
+  }
+
+  &:hover {
+    color: $Orange;
+    scale: 1.1;
+  }
+}
+
+.popup-text {
+  line-height: 1.4;
+}
+
+.popup-children-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+// - - - - - - - - - - - PHOTO UPLOADER - - - - - - - - - - -
+
+.photo-uploader-circle {
+  border-radius: 50%;
+  background-color: $G_01;
+  border: 2px dashed $G_04;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 8px;
+    width: 80px;
+    background-color: $G_03;
+    border-radius: 0px;
+    z-index: -1;
+  }
+
+  &.drag-active {
+    border-color: $Blue;
+    box-shadow: 0 0 0 4px rgba($Blue, 0.2);
+  }
+
+  &.has-image {
+    border-color: $G_03;
+  }
+
+  .photo-placeholder-circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: $G_06;
+    position: relative;
+
+    svg {
+      width: 44px;
+      height: 44px;
+      stroke-width: 1px;
+      color: $G_06;
+      transition: all 0.2s ease;
+    }
+
+    .upload-text {
+      font-size: 12px;
+      color: $G_07;
+      margin-top: 8px;
+    }
+  }
+
+  .uploaded-image-circle {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    background-color: rgba($Dark, 0.3);
+
+    .upload-text {
+      color: $White;
+    }
+
+    svg {
+      stroke-width: 1.2px;
+      color: $White;
+      scale: 1.1;
+      transition: all 0.2s ease;
+    }
+  }
+
+  .image-overlay-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $White;
+    display: flex;
+    gap: 8px;
+
+    &:hover {
+      opacity: 1;
+      background-color: rgba($White, 0.3);
+    }
+
+    .delete-photo-btn, .change-photo-btn {
+      background-color: rgba($Dark, 0.7);
+      color: $White;
+      border: none;
+      border-radius: 12px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      svg {
+        width: 24px;
+        height: 24px;
+        stroke-width: 1.2px;
+      }
+
+      &:hover {
+        background-color: $Red;
+        transform: scale(1.1);
+      }
+    }
+
+    .change-photo-btn {
+        &:hover {
+        background-color: $Green;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+}
+
+// Cropper styles for use with Popup component
+.cropper-area {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 300px;
+  overflow: hidden;
+  background-color: $G_01;
+  transition: all 0.2s ease;
+
+  .reactEasyCrop_Container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  @media screen and (max-width: 460px) {
+    width: 200px;
+    height: 200px;
+    transition: all 0.2s ease;
+  }
+
+}
+
+.cropper-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  .zoom-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    span {
+      color: $G_07;
+      font-size: 14px;
+      min-width: 40px;
+    }
+
+    input[type="range"] {
+      flex: 1;
+      height: 8px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: linear-gradient(to right, $G_03 0%, $G_03 100%);
+      border-radius: 12px;
+      outline: none;
+      position: relative;
+      
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $G_01;
+        border-radius: 12px;
+        z-index: -1;
+      }
+
+      /* Webkit (Chrome, Safari, Edge) */
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: $Orange;
+        border: 2px solid $Orange;
+        cursor: pointer;
+      }
+      
+      /* Firefox */
+      &::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: $Orange;
+        border: 2px solid $Orange;
+        cursor: pointer;
+      }
+      
+      /* IE */
+      &::-ms-thumb {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: $Orange;
+        border: 2px solid $Orange;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  .cropper-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    width: 120px;
+  }
+  
+}
+
+.cropper-popup .popup-container{
+  width: 80%;
+  max-width: 400px
+}
+
+// - - - - - - - - - - - - - - AlERT - - - - - - - - - - - - - -
+.alert-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 88%;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  
+  &.alert-entering {
+    animation: slideDown 0.3s forwards;
+  }
+  
+  &.alert-leaving {
+    animation: slideUp 0.3s forwards;
+  }
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 12px;
+  padding: 12px 8px 12px 12px;
+  display: flex;
+  align-items: center;
+  min-width: 200px;
+  pointer-events: auto;
+  
+  .alert-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    svg {
+      width: 26px;
+      height: 26px;
+      color: $White;
+    }
+  }
+  
+  .alert-message {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    color: $White;
+  }
+  
+  .alert-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    svg {
+      width: 24px;
+      height: 24px;
+      opacity: 0.6;
+      color: $White;
+      transition: opacity 0.2s ease;
+      stroke-width: 2px;
+    }
+    
+    &:hover svg {
+      opacity: 1;
+      scale: 1.1;
+    }
+  }
+  
+  &.alert-success {
+    background-color: $Green;
+  }
+  
+  &.alert-error {
+    background-color: $Red;
+  }
+  
+  &.alert-warning {
+    background-color: $Orange;
+  }
+  
+  &.alert-info {
+    background-color: $Blue;
+  }
+  
+  &.alert-loading {
+    background-color: $Dark;
+  }
+}
+
+/* Alert test buttons styling */
+.alert-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-80px) translateX(-50%);
+    transition: transform 0.3s ease;
+  }
+  to {
+    transform: translateY(0) translateX(-50%);
+    transition: transform 0.3s ease;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0) translateX(-50%);
+    transition: transform 0.3s ease;
+  }
+  to {
+    transform: translateY(-80px) translateX(-50%);
+    transition: transform 0.3s ease;
+  }
+}
+
+// - - - - - - - - - - - MenuDropdown - - - - - - - - - -
+.menu-dropdown {
+  position: relative;
+  display: inline-block;
+
+  .menu-trigger {
+    cursor: pointer;
+  }
+
+  .menu-panel {
+    position: absolute;
+    top: calc(100% + 4px);
+    min-width: 148px;
+    background-color: $White;
+    border-radius: 12px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    padding: 0;
+    z-index: 1000;
+    border: 2px solid $G_01;
+    overflow: hidden;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+
+    &.align-right { 
+      right: 0;
+    }
+
+    // }
+    // &.align-left { left: 0; background-color: lightblue; }
+  }
+
+  .menu-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+          padding: 10px 0;
+          
+
+    .menu-item {
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 6px;
+        padding: 5px 8px;
+        color: $Dark;
+        text-decoration: none;
+      }
+
+     svg, .icon svg {
+        width: 24px;
+        height: 24px;
+        color: $G_06;
+      }
+
+      &:hover a {
+        background-color: $G_01;
+      }
+
+      &.disabled a {
+        color: $G_06;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+
+// - - - - - - - - FAVS PAGE - - - - - - - - -
+// Utilities for Favs.jsx inline styles
+.muted-text {
+  color: $G_06;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.column-center-gap-8 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
