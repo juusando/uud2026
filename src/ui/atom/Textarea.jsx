@@ -9,7 +9,8 @@ const TextArea = ({
   className,
   maxLength = 50,
   value,
-  onChange
+  onChange,
+  name
 }) => {
   const [text, setText] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -49,6 +50,7 @@ const TextArea = ({
       </div>
 
       <textarea
+        name={name}
         value={currentText}
         onChange={handleChange}
         onFocus={() => setIsFocused(true)}

@@ -3,7 +3,10 @@ import React from 'react';
 // Define the pages and UI components
 const pages = {
   Atoms: 'atoms',
-  Lab: 'lab',
+  Home: 'home',
+  Login: 'login',
+  Signup: 'signup',
+  Setting: 'setting',
 };  
 
 const uiComponents = {
@@ -12,11 +15,13 @@ const uiComponents = {
 
 // Create a default route for the Atoms page from pages folder
 const AtomsComponent = React.lazy(() => import(`../pages/atoms.jsx`));
-// Create a default route for the Lab page from pages folder
-const LabComponent = React.lazy(() => import(`../pages/lab.jsx`));
+// Create a default route for the Home page from pages folder
+const HomeComponent = React.lazy(() => import(`../pages/home.jsx`));
 
 // Create email verification component (use verify.jsx)
 const VerifyEmailComponent = React.lazy(() => import(`../verify.jsx`));
+// Public user profile by username
+const PublicUserComponent = React.lazy(() => import(`../pages/user.jsx`));
 
 // Create routes with dynamic imports for both 'pages' and 'ui' directories
 const pageRoutes = Object.keys(pages).map(page => {
@@ -35,10 +40,10 @@ const uiRoutes = Object.keys(uiComponents).map(component => {
   };
 });
 
-// Add the default route for Atoms (home page)
+// Add the default route for Home
 const defaultRoute = {
   path: '/',
-  element: <LabComponent />,
+  element: <HomeComponent />,
 };
 
 // Add additional routes for design system navigation
@@ -60,4 +65,4 @@ const verifyRoute = {
 
 // Export both the default route and the dynamically generated routes from 'pages' and 'ui'
 // Note: verifyRoute must come before verifyEmailRoute to match /verify/:token first
-export default [defaultRoute, designSystemRoute, verifyRoute, verifyEmailRoute, ...pageRoutes, ...uiRoutes];
+export default [defaultRoute, designSystemRoute, verifyRoute, verifyEmailRoute, ...pageRoutes, ...uiRoutes, { path: '/:username', element: <PublicUserComponent /> }];

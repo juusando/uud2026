@@ -381,7 +381,6 @@ form{
     z-index: 1000;
     margin-top: 4px;
     padding: 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     list-style: none;
     text-align: left;
   }
@@ -590,7 +589,7 @@ form{
 
   .input {
     width: 100%;
-    height: 200px;
+    height: 108px;
     border: 2px solid $G_04;
     border-radius: 12px;
     padding: 12px;
@@ -622,16 +621,17 @@ form{
     top: 0;
     left: 0;
     right: 0;
-    height: 52px;
+    height: 50px;
     background-color: $White;
-    margin: 4px;
-    padding: 0 12px 0 8px;
+    margin: 2px;
+    padding: 0 12px 0 10px;
     display: flex;
-    align-items: center
+    align-items: center;
+    border-radius: 12px;
   }
 
   .input {
-    padding-top: 54px;
+    padding-top: 46px;
   }
 }
 
@@ -687,7 +687,6 @@ form{
     border: 2px solid $Blue;
     max-height: 248px;
     overflow-y: auto;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 
     .dropdown-option {
       display: flex;
@@ -846,7 +845,6 @@ form{
 
   &.drag-active {
     border-color: $Blue;
-    box-shadow: 0 0 0 4px rgba($Blue, 0.2);
   }
 
   &.has-image {
@@ -1050,7 +1048,6 @@ form{
         background-color: $Orange;
         border: 2px solid $Orange;
         cursor: pointer;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
     }
   }
@@ -1213,7 +1210,6 @@ form{
     min-width: 148px;
     background-color: $White;
     border-radius: 12px;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
     padding: 0;
     z-index: 1000;
     border: 2px solid $G_01;

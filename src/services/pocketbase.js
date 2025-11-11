@@ -251,7 +251,7 @@ export const updateUser = async (userId, updateData) => {
 
     // Define allowed fields for user updates
     // Note: email cannot be updated directly - use requestEmailChange instead
-    const allowedFields = ["name", "username", "country", "role"];
+    const allowedFields = ["name", "username", "country", "role", "word"];
 
     // Prepare form data for file upload
     const formData = new FormData();
