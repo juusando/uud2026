@@ -3,6 +3,7 @@ import SvgIcn from "../../data/IconCompo";
 import { useState, useEffect, useRef, Children } from 'react';
 
 const DropdownInput = ({
+  label,
   iconL,
   iconR,
   iconRDelete,
@@ -84,7 +85,9 @@ const DropdownInput = ({
   }, [isFocused]);
 
   return (
-    <div className={`input-icon-box ${isFocused ? 'focused' : ''} ${className}`}>
+    <div className={`input-container ${className}`}>
+      {label && <div className="input-label">{label}</div>}
+      <div className={`input-icon-box ${isFocused ? 'focused' : ''}`}>
       <span 
         className="icon left-icon"
         onMouseEnter={() => setIsHoveringLeftIcon(true)}
@@ -143,6 +146,7 @@ const DropdownInput = ({
           ))}
         </ul>
       )}
+      </div>
     </div>
   );
 };

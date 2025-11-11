@@ -14,17 +14,22 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
-  width: 80%;
+  height: 100%;
+  width: 100%;
   max-width: 560px;
-  padding: 16px 32px 32px;
-  margin: 12px 0;
-  background-color: $G_00;
+  padding: 80px 32px;
+  margin: auto 0;
   border-radius: 16px;
-  // border: solid 2px $G_02;
 
   .ds_title {
     font-size: 27px;
     color: $Orange;
+  }
+    .profile-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
   }
 }
 
@@ -203,7 +208,13 @@ form{
   flex-direction: column;
   align-items: start;
   width: 100%;
-  gap: 8px;
+  gap: 5px;
+
+  .input-label{
+    font-size: 18px;
+    color: $Dark;
+    padding: 0 12px;
+  }
 }
 
 .input-icon-box {
@@ -364,12 +375,12 @@ form{
     right: 0;
     background-color: $White;
     border: 2px solid $Blue;
-    border-radius: 12px;
+    // border-radius: 12px;
     max-height: 200px;
     overflow-y: auto;
     z-index: 1000;
     margin-top: 4px;
-    padding: 8px 0;
+    padding: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     list-style: none;
     text-align: left;
@@ -631,10 +642,11 @@ form{
   width: 100%;
 
   .input-container {
-    width: 100%;
-    position: relative;
     display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
+    width: 100%;
     transition: border-color 0.3s;
 
     svg {
@@ -667,27 +679,26 @@ form{
 
   .dropdown {
     position: absolute;
-    top: 104%;
+    top: 110%;
     left: 0;
     right: 0;
-    z-index: 10; // Keep dropdown above other elements
+    z-index: 10;
     background-color: $White;
     border: 2px solid $Blue;
-    border-radius: 16px;
-    max-height: 200px; // Limit the height of the dropdown
-    overflow-y: auto; // Scroll if there are too many options
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); // Add shadow for better visibility
+    max-height: 248px;
+    overflow-y: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 
     .dropdown-option {
-      display: flex; // Align items
+      display: flex;
       align-items: center;
       gap: 12px;
-      padding: 10px; // Space inside options
-      cursor: pointer; // Change cursor on hover
-      color: $Dark; // Default option color
+      padding: 10px;
+      cursor: pointer;
+      color: $Dark;
 
       &.selected {
-        background-color: $G_01; // Highlight selected option
+        background-color: $G_01;
       }
 
       svg {
@@ -697,19 +708,19 @@ form{
       }
 
       &:hover {
-        background-color: $G_02; // Highlight on hover
+        background-color: $G_02;
       }
 
       &.highlighted {
         background-color: $G_02;
-        color: white; // Highlighted text color
+        color: white;
       }
     }
   }
 
   .flag-icon-in-input {
-    width: 28px; // Adjust flag size
-    height: 28px; // Adjust flag size
+    width: 28px;
+    height: 28px;
     border-radius: 20px;
   }
 }

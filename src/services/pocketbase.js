@@ -2,7 +2,7 @@ import PocketBase from "pocketbase";
 
 // Initialize PocketBase client with the provided URL
 // Note: Using HTTP instead of HTTPS due to SSL certificate issues with pb01.uud.io
-const pb = new PocketBase("https://pb06.uud.io/");
+const pb = new PocketBase("https://pb01.uud.io/");
 // const pb = new PocketBase("http://localhost:8090");
 
 // Helper function to get file URL for user avatar
@@ -11,7 +11,7 @@ export const getUserAvatarUrl = (user, filename) => {
 
   // For now, let's try a direct approach without using pb.files.getUrl
   // which might be causing CORS issues
-  const baseUrl = "https://pb06.uud.io";
+  const baseUrl = "https://pb01.uud.io";
   const collectionName = "users"; // assuming users collection
   const recordId = user.id;
 
@@ -96,39 +96,7 @@ export const getAvatarBlob = async (user, filename) => {
 
 // Removed: create dummy user utility
 
-// Function to test connection by fetching users
-export const testConnection = async () => {
-  try {
-    console.log("=== TESTING POCKETBASE CONNECTION ===");
-    console.log("PocketBase URL:", pb.baseUrl);
-    console.log(
-      "Attempting to connect to:",
-      `${pb.baseUrl}api/collections/users/records`,
-    );
-
-    const records = await pb.collection("users").getList(1, 5);
-    console.log("Connection test successful:", records);
-    return { success: true, data: records };
-  } catch (error) {
-    console.error("=== CONNECTION TEST FAILED ===");
-    console.error("Error object:", error);
-    console.error("Error name:", error.name);
-    console.error("Error message:", error.message);
-    console.error("Error status:", error.status);
-    console.error("Error data:", error.data);
-    console.error("Error originalError:", error.originalError);
-    console.error("Full error stack:", error.stack);
-
-    // Check for specific error types
-    if (error.name === "TypeError" && error.message.includes("fetch")) {
-      console.error(
-        "This appears to be a network/fetch error - possibly CORS or SSL certificate issue",
-      );
-    }
-
-    return { success: false, error: error.message };
-  }
-};
+//
 
 // Function to register a new user with form data
 export const registerUser = async (formData) => {
@@ -283,7 +251,7 @@ export const updateUser = async (userId, updateData) => {
 
     // Define allowed fields for user updates
     // Note: email cannot be updated directly - use requestEmailChange instead
-    const allowedFields = ["name", "username"];
+    const allowedFields = ["name", "username", "country", "role"];
 
     // Prepare form data for file upload
     const formData = new FormData();

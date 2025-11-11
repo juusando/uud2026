@@ -5,6 +5,7 @@ import CountryFlag from "../../data/IconCountry"; // Import the CountryFlag comp
 import SvgIcn from "../../data/IconCompo";
 
 const CountryDropDown = ({ 
+  label,
   placeholder, 
   className = '', 
   onSelect,
@@ -130,33 +131,34 @@ const CountryDropDown = ({
   }, []);
 
   return (
-    <div className={`input-icon-box ${isFocused ? 'focused' : ''} ${className}`}>
-      <div className="input-container">
-        {/* Show the default icon only if no flag is displayed */}
-        {!selectedOption && <SvgIcn Name="canva" className="icon " />}
+    <div className={`input-container ${className}`}>
+      {label && <div className="input-label">{label}</div>}
+      <div className={`input-icon-box ${isFocused ? 'focused' : ''}`}>
+        <span className="icon left-icon">
+          {selectedOption && inputValue === selectedOption.label ? (
+            <CountryFlag Name={selectedOption.iso2.toLowerCase()} className="flag-icon-in-input" />
+          ) : (
+            <SvgIcn Name="canva" />
+          )}
+        </span>
 
-        {/* Show the flag if an option is selected and matches the input value */}
-        {selectedOption && inputValue === selectedOption.label && (
-          <CountryFlag Name={selectedOption.iso2.toLowerCase()} className="flag-icon-in-input" />
-        )}
+        <div className="input-wrapper">
+          <input
+            type="text"
+            className={`input ${isFocused ? 'focused-input' : ''} ${!hasMatch ? 'no-match' : ''}`}
+            placeholder={placeholder}
+            value={inputValue}
+            onFocus={handleFocus}
+            onBlur={() => {
+              setIsFocused(false);
+              if (!inputValue) setSelectedOption(null);
+            }}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+            ref={inputRef}
+          />
+        </div>
 
-        <input
-          type="text"
-          className={`input ${isFocused ? 'focused-input' : ''} ${!hasMatch ? 'no-match' : ''}`}
-          placeholder={placeholder}
-          value={inputValue}
-          onFocus={handleFocus}
-          onBlur={() => {
-            setIsFocused(false);
-            // If the input value is empty, reset selected option
-            if (!inputValue) setSelectedOption(null);
-          }}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
-          ref={inputRef}
-        />
-        
-        {/* Right icon - changes based on focus state and input value */}
         <span
           className="icon right-icon"
           onClick={inputValue ? handleClearInput : null}
@@ -169,14 +171,12 @@ const CountryDropDown = ({
             <SvgIcn Name={isFocused ? focusR : iconR} />
           )}
         </span>
-      </div>
-
       {isFocused && filteredOptions.length > 0 && (
         <ul className="dropdown" ref={dropdownRef}>
           {filteredOptions.map((option, index) => (
             <li
               key={index}
-              ref={el => optionRefs.current[index] = el} // Attach a ref to each option
+              ref={el => optionRefs.current[index] = el}
               className={`dropdown-option ${index === highlightedIndex ? 'highlighted' : ''}`}
               onMouseDown={() => handleOptionClick(option)}
               style={{ color: index === highlightedIndex ? 'blue' : 'black' }}
@@ -187,6 +187,7 @@ const CountryDropDown = ({
           ))}
         </ul>
       )}
+      </div>
     </div>
   );
 };
