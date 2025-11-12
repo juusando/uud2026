@@ -12,7 +12,7 @@
   gap: 16px;
   height: 100%;
   width: 100%;
-  padding: 32px;
+  // padding: 32px;
   margin: auto 0;
 
   .ds_title {
@@ -75,6 +75,7 @@
   }
 
 }
+
 // - - - - - - - - - SMALL
 .small {
   height: 40px;
@@ -1259,18 +1260,3 @@ form{
 
 
 // - - - - - - - - FAVS PAGE - - - - - - - - -
-// Utilities for Favs.jsx inline styles
-.muted-text {
-  color: $G_06;
-}
-
-.no-underline {
-  text-decoration: none;
-}
-
-.column-center-gap-8 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}

@@ -48,8 +48,8 @@ const Header = () => {
         <Button className="nav-btn" iconL="tool" to="/tools"><span>Tools</span></Button>
         <Button className="nav-btn" iconL="resos" to="/resos"><span>Resos</span></Button>
         <Button className="nav-btn" iconL="idea" to="/ideaz"><span>Ideaz</span></Button>
-        <Button className="nav-btn" iconL="apps" to="/ideaz"><span>Apps</span></Button>
-        <Button className="nav-btn" iconL="talx" to="/ideaz"><span>Talx</span></Button>
+        <Button className="nav-btn" iconL="apps" to="/apps"><span>Apps</span></Button>
+        <Button className="nav-btn" iconL="talx" to="/talx"><span>Talx</span></Button>
       </nav>
       <div className="right-header">
         {loggedIn ? (

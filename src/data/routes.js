@@ -7,7 +7,12 @@ const pages = {
   Login: 'login',
   Signup: 'signup',
   Setting: 'setting',
-};  
+  Tools: 'tools',
+  Resos: 'resos',
+  Ideaz: 'ideaz',
+  Apps: 'apps',
+  Talx: 'talx',
+};
 
 const uiComponents = {
 

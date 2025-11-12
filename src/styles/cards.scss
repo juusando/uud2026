@@ -1,0 +1,171 @@
+@import 'vars';
+
+// - - - - - - - - - - TOOLS GRID - - - - - - - - - -
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+  background-color: $G_01;
+  padding: 16px;
+}
+
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px;
+  border-radius: 18px;
+  background: $White;
+  text-decoration: none;
+  color: $Dark;
+  transition: transform .1s ease, box-shadow .1s ease, opacity .1s ease;
+  opacity: 0;
+  animation: fadeIn .4s ease forwards;
+  width: 260px;
+  box-sizing: border-box;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.04);
+
+}
+
+.tool-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: $G_04;
+}
+
+.tool-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70px;
+  // border-radius: 50%;
+  // background: $G_01;
+  // border: 1px solid $G_03;
+  // overflow: hidden;
+}
+
+.tool-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tool-logo .tool-logo-fallback {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.tool-logo .tool-logo-fallback svg {
+  width: 100%;
+  height: 68px;
+  color: $G_03;
+}
+
+.tool-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.tool-name {
+  font-size: 19px;
+  font-weight: 400;
+  color: $Dark;
+}
+
+.tool-desc {
+  font-size: 16px;
+  color: $Dark;
+  line-height: 1.3;
+  width: 100%;
+  min-height:66px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin: 5px 0;
+}
+// - - - - - - - - - - - Tags - - - - - - 
+.tool-tags{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height:32px;
+  overflow: hidden;
+  flex-wrap: wrap;
+
+
+.tool-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 8px;
+  border-radius: 16px;
+  background: $G_01;
+  font-size: 13px;
+  color: $Dark;
+}
+
+.tools-sentinel {
+  width: 100%;
+  height: 1px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+}
+
+// - - - - - - - - - - - -  Utilities for Favs.jsx inline styles
+.muted-text {
+  color: $G_06;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+
+.tool-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+}
+.tool-icon svg {
+  width: 26px;
+  height: 26px;
+  color: $G_06;
+}
+
+.tool-icon.price-free svg {
+  color: #16a34a;
+}
+
+.tool-icon.price-freemium svg {
+  color: #10b981;
+}
+
+.tool-icon.price-paid svg {
+  color: #6b21a8;
+}
