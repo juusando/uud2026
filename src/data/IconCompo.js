@@ -9,6 +9,7 @@ import { ReactComponent as account } from '../assets/icons/account.svg';
 import { ReactComponent as add } from '../assets/icons/add.svg';
 import { ReactComponent as add_project } from '../assets/icons/add_project.svg';
 import { ReactComponent as analytics } from '../assets/icons/analytics.svg';
+import { ReactComponent as analytics_b } from '../assets/icons/analytics_b.svg';
 import { ReactComponent as analytics_bb } from '../assets/icons/analytics_bb.svg';
 import { ReactComponent as android } from '../assets/icons/android.svg';
 import { ReactComponent as android_fill } from '../assets/icons/android_fill.svg';
@@ -16,6 +17,7 @@ import { ReactComponent as angellist } from '../assets/icons/angellist.svg';
 import { ReactComponent as apple } from '../assets/icons/apple.svg';
 import { ReactComponent as apple_fill } from '../assets/icons/apple_fill.svg';
 import { ReactComponent as apple_music } from '../assets/icons/apple_music.svg';
+import { ReactComponent as apps } from '../assets/icons/apps.svg';
 import { ReactComponent as archive } from '../assets/icons/archive.svg';
 import { ReactComponent as attach } from '../assets/icons/attach.svg';
 import { ReactComponent as back } from '../assets/icons/back.svg';
@@ -27,6 +29,7 @@ import { ReactComponent as blog } from '../assets/icons/blog.svg';
 import { ReactComponent as blog_line } from '../assets/icons/blog_line.svg';
 import { ReactComponent as bluesky } from '../assets/icons/bluesky.svg';
 import { ReactComponent as bold } from '../assets/icons/bold.svg';
+import { ReactComponent as book } from '../assets/icons/book.svg';
 import { ReactComponent as broken_link } from '../assets/icons/broken_link.svg';
 import { ReactComponent as browser } from '../assets/icons/browser.svg';
 import { ReactComponent as btn_bg } from '../assets/icons/btn_bg.svg';
@@ -38,6 +41,9 @@ import { ReactComponent as camera } from '../assets/icons/camera.svg';
 import { ReactComponent as canva } from '../assets/icons/canva.svg';
 import { ReactComponent as cart } from '../assets/icons/cart.svg';
 import { ReactComponent as caution } from '../assets/icons/caution.svg';
+import { ReactComponent as chara00 } from '../assets/icons/chara00.svg';
+import { ReactComponent as chara01 } from '../assets/icons/chara01.svg';
+import { ReactComponent as chara_full00 } from '../assets/icons/chara_full00.svg';
 import { ReactComponent as chat } from '../assets/icons/chat.svg';
 import { ReactComponent as check_on } from '../assets/icons/check_on.svg';
 import { ReactComponent as clear } from '../assets/icons/clear.svg';
@@ -46,8 +52,12 @@ import { ReactComponent as close } from '../assets/icons/close.svg';
 import { ReactComponent as close_s } from '../assets/icons/close_s.svg';
 import { ReactComponent as clubhouse } from '../assets/icons/clubhouse.svg';
 import { ReactComponent as codepen } from '../assets/icons/codepen.svg';
+import { ReactComponent as color } from '../assets/icons/color.svg';
+import { ReactComponent as colorz_logo } from '../assets/icons/colorz_logo.svg';
 import { ReactComponent as company } from '../assets/icons/company.svg';
 import { ReactComponent as company_ani } from '../assets/icons/company_ani.svg';
+import { ReactComponent as compareimage_logo } from '../assets/icons/compareimage_logo.svg';
+import { ReactComponent as dark } from '../assets/icons/dark.svg';
 import { ReactComponent as delete_account } from '../assets/icons/delete_account.svg';
 import { ReactComponent as delete_icn } from '../assets/icons/delete_icn.svg';
 import { ReactComponent as designer } from '../assets/icons/designer.svg';
@@ -68,6 +78,7 @@ import { ReactComponent as empty_on } from '../assets/icons/empty_on.svg';
 import { ReactComponent as en } from '../assets/icons/en.svg';
 import { ReactComponent as error } from '../assets/icons/error.svg';
 import { ReactComponent as etsy } from '../assets/icons/etsy.svg';
+import { ReactComponent as event } from '../assets/icons/event.svg';
 import { ReactComponent as event_line } from '../assets/icons/event_line.svg';
 import { ReactComponent as experience } from '../assets/icons/experience.svg';
 import { ReactComponent as eye_off } from '../assets/icons/eye_off.svg';
@@ -78,6 +89,10 @@ import { ReactComponent as fav_non } from '../assets/icons/fav_non.svg';
 import { ReactComponent as fav_on } from '../assets/icons/fav_on.svg';
 import { ReactComponent as figma_line } from '../assets/icons/figma_line.svg';
 import { ReactComponent as flag } from '../assets/icons/flag.svg';
+import { ReactComponent as free } from '../assets/icons/free.svg';
+import { ReactComponent as freemium } from '../assets/icons/freemium.svg';
+import { ReactComponent as full } from '../assets/icons/full.svg';
+import { ReactComponent as game_b } from '../assets/icons/game_b.svg';
 import { ReactComponent as ghost } from '../assets/icons/ghost.svg';
 import { ReactComponent as github } from '../assets/icons/github.svg';
 import { ReactComponent as gitlab } from '../assets/icons/gitlab.svg';
@@ -90,12 +105,14 @@ import { ReactComponent as hand2 } from '../assets/icons/hand2.svg';
 import { ReactComponent as hand3 } from '../assets/icons/hand3.svg';
 import { ReactComponent as hand4 } from '../assets/icons/hand4.svg';
 import { ReactComponent as heart } from '../assets/icons/heart.svg';
+import { ReactComponent as heart2 } from '../assets/icons/heart2.svg';
 import { ReactComponent as home } from '../assets/icons/home.svg';
 import { ReactComponent as horror } from '../assets/icons/horror.svg';
 import { ReactComponent as hum } from '../assets/icons/hum.svg';
 import { ReactComponent as hum2 } from '../assets/icons/hum2.svg';
 import { ReactComponent as human } from '../assets/icons/human.svg';
 import { ReactComponent as humb } from '../assets/icons/humb.svg';
+import { ReactComponent as iap } from '../assets/icons/iap.svg';
 import { ReactComponent as icon00 } from '../assets/icons/icon00.svg';
 import { ReactComponent as icon01 } from '../assets/icons/icon01.svg';
 import { ReactComponent as icon02 } from '../assets/icons/icon02.svg';
@@ -106,18 +123,24 @@ import { ReactComponent as icon06 } from '../assets/icons/icon06.svg';
 import { ReactComponent as icon07 } from '../assets/icons/icon07.svg';
 import { ReactComponent as id } from '../assets/icons/id.svg';
 import { ReactComponent as id_1 } from '../assets/icons/id_1.svg';
+import { ReactComponent as idea } from '../assets/icons/idea.svg';
 import { ReactComponent as image } from '../assets/icons/image.svg';
 import { ReactComponent as images } from '../assets/icons/images.svg';
 import { ReactComponent as instagram_line } from '../assets/icons/instagram_line.svg';
 import { ReactComponent as invitation } from '../assets/icons/invitation.svg';
 import { ReactComponent as italic } from '../assets/icons/italic.svg';
 import { ReactComponent as item_name } from '../assets/icons/item_name.svg';
+import { ReactComponent as items } from '../assets/icons/items.svg';
 import { ReactComponent as job } from '../assets/icons/job.svg';
+import { ReactComponent as jobs } from '../assets/icons/jobs.svg';
 import { ReactComponent as jobs_ani } from '../assets/icons/jobs_ani.svg';
+import { ReactComponent as jp } from '../assets/icons/jp.svg';
+import { ReactComponent as juusando_logo } from '../assets/icons/juusando_logo.svg';
 import { ReactComponent as juusando_text } from '../assets/icons/juusando_text.svg';
 import { ReactComponent as kik } from '../assets/icons/kik.svg';
 import { ReactComponent as language } from '../assets/icons/language.svg';
 import { ReactComponent as left_arrow } from '../assets/icons/left_arrow.svg';
+import { ReactComponent as light } from '../assets/icons/light.svg';
 import { ReactComponent as like } from '../assets/icons/like.svg';
 import { ReactComponent as line } from '../assets/icons/line.svg';
 import { ReactComponent as link } from '../assets/icons/link.svg';
@@ -132,11 +155,20 @@ import { ReactComponent as loading_ } from '../assets/icons/loading_.svg';
 import { ReactComponent as loading_ani } from '../assets/icons/loading_ani.svg';
 import { ReactComponent as lock } from '../assets/icons/lock.svg';
 import { ReactComponent as login } from '../assets/icons/login.svg';
+import { ReactComponent as logo01 } from '../assets/icons/logo01.svg';
+import { ReactComponent as logo02 } from '../assets/icons/logo02.svg';
+import { ReactComponent as logo03 } from '../assets/icons/logo03.svg';
+import { ReactComponent as logo04 } from '../assets/icons/logo04.svg';
+import { ReactComponent as logo05 } from '../assets/icons/logo05.svg';
+import { ReactComponent as logo06 } from '../assets/icons/logo06.svg';
 import { ReactComponent as logoo } from '../assets/icons/logoo.svg';
+import { ReactComponent as logotype_en } from '../assets/icons/logotype_en.svg';
+import { ReactComponent as logotype_jp } from '../assets/icons/logotype_jp.svg';
 import { ReactComponent as logout } from '../assets/icons/logout.svg';
 import { ReactComponent as mail } from '../assets/icons/mail.svg';
 import { ReactComponent as mail2 } from '../assets/icons/mail2.svg';
 import { ReactComponent as mail_ani } from '../assets/icons/mail_ani.svg';
+import { ReactComponent as mail_b } from '../assets/icons/mail_b.svg';
 import { ReactComponent as map } from '../assets/icons/map.svg';
 import { ReactComponent as mastodon } from '../assets/icons/mastodon.svg';
 import { ReactComponent as medium } from '../assets/icons/medium.svg';
@@ -154,17 +186,23 @@ import { ReactComponent as new_mail } from '../assets/icons/new_mail.svg';
 import { ReactComponent as new_password } from '../assets/icons/new_password.svg';
 import { ReactComponent as news } from '../assets/icons/news.svg';
 import { ReactComponent as newsletter } from '../assets/icons/newsletter.svg';
+import { ReactComponent as newz } from '../assets/icons/newz.svg';
+import { ReactComponent as no_item } from '../assets/icons/no_item.svg';
 import { ReactComponent as norif_off } from '../assets/icons/norif_off.svg';
 import { ReactComponent as norif_on } from '../assets/icons/norif_on.svg';
 import { ReactComponent as notion } from '../assets/icons/notion.svg';
 import { ReactComponent as ok } from '../assets/icons/ok.svg';
 import { ReactComponent as order_az } from '../assets/icons/order_az.svg';
 import { ReactComponent as order_za } from '../assets/icons/order_za.svg';
+import { ReactComponent as paid } from '../assets/icons/paid.svg';
 import { ReactComponent as password } from '../assets/icons/password.svg';
 import { ReactComponent as patreon } from '../assets/icons/patreon.svg';
 import { ReactComponent as pause } from '../assets/icons/pause.svg';
+import { ReactComponent as pause2 } from '../assets/icons/pause2.svg';
 import { ReactComponent as phone } from '../assets/icons/phone.svg';
 import { ReactComponent as pin } from '../assets/icons/pin.svg';
+import { ReactComponent as pin_in } from '../assets/icons/pin_in.svg';
+import { ReactComponent as pin_in_ani } from '../assets/icons/pin_in_ani.svg';
 import { ReactComponent as pinjob } from '../assets/icons/pinjob.svg';
 import { ReactComponent as pinjob_ani } from '../assets/icons/pinjob_ani.svg';
 import { ReactComponent as pinterest } from '../assets/icons/pinterest.svg';
@@ -172,6 +210,7 @@ import { ReactComponent as popup } from '../assets/icons/popup.svg';
 import { ReactComponent as portfolio } from '../assets/icons/portfolio.svg';
 import { ReactComponent as poshmark } from '../assets/icons/poshmark.svg';
 import { ReactComponent as post } from '../assets/icons/post.svg';
+import { ReactComponent as press } from '../assets/icons/press.svg';
 import { ReactComponent as press_kit } from '../assets/icons/press_kit.svg';
 import { ReactComponent as privacy } from '../assets/icons/privacy.svg';
 import { ReactComponent as producthunt } from '../assets/icons/producthunt.svg';
@@ -180,11 +219,15 @@ import { ReactComponent as pull_down } from '../assets/icons/pull_down.svg';
 import { ReactComponent as pull_up } from '../assets/icons/pull_up.svg';
 import { ReactComponent as px500 } from '../assets/icons/px500.svg';
 import { ReactComponent as radio_off } from '../assets/icons/radio_off.svg';
+import { ReactComponent as randomcolorz } from '../assets/icons/randomcolorz.svg';
+import { ReactComponent as randomcolorz_logo } from '../assets/icons/randomcolorz_logo.svg';
 import { ReactComponent as reddit } from '../assets/icons/reddit.svg';
 import { ReactComponent as register } from '../assets/icons/register.svg';
 import { ReactComponent as report } from '../assets/icons/report.svg';
 import { ReactComponent as reqest } from '../assets/icons/reqest.svg';
 import { ReactComponent as reset } from '../assets/icons/reset.svg';
+import { ReactComponent as reset2 } from '../assets/icons/reset2.svg';
+import { ReactComponent as resos } from '../assets/icons/resos.svg';
 import { ReactComponent as restart } from '../assets/icons/restart.svg';
 import { ReactComponent as right_arrow } from '../assets/icons/right_arrow.svg';
 import { ReactComponent as right_arrow_ani } from '../assets/icons/right_arrow_ani.svg';
@@ -195,25 +238,36 @@ import { ReactComponent as search } from '../assets/icons/search.svg';
 import { ReactComponent as search_ani } from '../assets/icons/search_ani.svg';
 import { ReactComponent as send } from '../assets/icons/send.svg';
 import { ReactComponent as send_ani } from '../assets/icons/send_ani.svg';
+import { ReactComponent as separator } from '../assets/icons/separator.svg';
+import { ReactComponent as service_b } from '../assets/icons/service_b.svg';
 import { ReactComponent as services } from '../assets/icons/services.svg';
+import { ReactComponent as services_bb } from '../assets/icons/services_bb.svg';
 import { ReactComponent as setting } from '../assets/icons/setting.svg';
+import { ReactComponent as setting_b } from '../assets/icons/setting_b.svg';
 import { ReactComponent as shake_hands } from '../assets/icons/shake_hands.svg';
+import { ReactComponent as side_in } from '../assets/icons/side_in.svg';
+import { ReactComponent as side_out } from '../assets/icons/side_out.svg';
 import { ReactComponent as signal } from '../assets/icons/signal.svg';
 import { ReactComponent as signup } from '../assets/icons/signup.svg';
+import { ReactComponent as small } from '../assets/icons/small.svg';
 import { ReactComponent as small_arrow } from '../assets/icons/small_arrow.svg';
 import { ReactComponent as snapchat } from '../assets/icons/snapchat.svg';
 import { ReactComponent as soundcloud } from '../assets/icons/soundcloud.svg';
 import { ReactComponent as spotify } from '../assets/icons/spotify.svg';
 import { ReactComponent as stackoverflow } from '../assets/icons/stackoverflow.svg';
+import { ReactComponent as start } from '../assets/icons/start.svg';
 import { ReactComponent as stop } from '../assets/icons/stop.svg';
 import { ReactComponent as subject } from '../assets/icons/subject.svg';
 import { ReactComponent as substack } from '../assets/icons/substack.svg';
 import { ReactComponent as tag } from '../assets/icons/tag.svg';
+import { ReactComponent as talx } from '../assets/icons/talx.svg';
 import { ReactComponent as telegram } from '../assets/icons/telegram.svg';
 import { ReactComponent as text_small } from '../assets/icons/text_small.svg';
 import { ReactComponent as threads_line } from '../assets/icons/threads_line.svg';
 import { ReactComponent as tiktok_line } from '../assets/icons/tiktok_line.svg';
 import { ReactComponent as timer } from '../assets/icons/timer.svg';
+import { ReactComponent as timer_logo } from '../assets/icons/timer_logo.svg';
+import { ReactComponent as tool } from '../assets/icons/tool.svg';
 import { ReactComponent as trash } from '../assets/icons/trash.svg';
 import { ReactComponent as trash_ani } from '../assets/icons/trash_ani.svg';
 import { ReactComponent as twetter_line } from '../assets/icons/twetter_line.svg';
@@ -238,6 +292,7 @@ import { ReactComponent as uud_line } from '../assets/icons/uud_line.svg';
 import { ReactComponent as uud_sns } from '../assets/icons/uud_sns.svg';
 import { ReactComponent as uxer_2_on } from '../assets/icons/uxer_2_on.svg';
 import { ReactComponent as uxer_simple } from '../assets/icons/uxer_simple.svg';
+import { ReactComponent as uxers } from '../assets/icons/uxers.svg';
 import { ReactComponent as view } from '../assets/icons/view.svg';
 import { ReactComponent as view_link } from '../assets/icons/view_link.svg';
 import { ReactComponent as views } from '../assets/icons/views.svg';
@@ -262,6 +317,7 @@ const iconComponents = {
   'add': add,
   'add_project': add_project,
   'analytics': analytics,
+  'analytics_b': analytics_b,
   'analytics_bb': analytics_bb,
   'android': android,
   'android_fill': android_fill,
@@ -269,6 +325,7 @@ const iconComponents = {
   'apple': apple,
   'apple_fill': apple_fill,
   'apple_music': apple_music,
+  'apps': apps,
   'archive': archive,
   'attach': attach,
   'back': back,
@@ -280,6 +337,7 @@ const iconComponents = {
   'blog_line': blog_line,
   'bluesky': bluesky,
   'bold': bold,
+  'book': book,
   'broken_link': broken_link,
   'browser': browser,
   'btn_bg': btn_bg,
@@ -291,6 +349,9 @@ const iconComponents = {
   'canva': canva,
   'cart': cart,
   'caution': caution,
+  'chara00': chara00,
+  'chara01': chara01,
+  'chara_full00': chara_full00,
   'chat': chat,
   'check_on': check_on,
   'clear': clear,
@@ -299,8 +360,12 @@ const iconComponents = {
   'close_s': close_s,
   'clubhouse': clubhouse,
   'codepen': codepen,
+  'color': color,
+  'colorz_logo': colorz_logo,
   'company': company,
   'company_ani': company_ani,
+  'compareimage_logo': compareimage_logo,
+  'dark': dark,
   'delete_account': delete_account,
   'delete_icn': delete_icn,
   'designer': designer,
@@ -321,6 +386,7 @@ const iconComponents = {
   'en': en,
   'error': error,
   'etsy': etsy,
+  'event': event,
   'event_line': event_line,
   'experience': experience,
   'eye_off': eye_off,
@@ -331,6 +397,10 @@ const iconComponents = {
   'fav_on': fav_on,
   'figma_line': figma_line,
   'flag': flag,
+  'free': free,
+  'freemium': freemium,
+  'full': full,
+  'game_b': game_b,
   'ghost': ghost,
   'github': github,
   'gitlab': gitlab,
@@ -343,12 +413,14 @@ const iconComponents = {
   'hand3': hand3,
   'hand4': hand4,
   'heart': heart,
+  'heart2': heart2,
   'home': home,
   'horror': horror,
   'hum': hum,
   'hum2': hum2,
   'human': human,
   'humb': humb,
+  'iap': iap,
   'icon00': icon00,
   'icon01': icon01,
   'icon02': icon02,
@@ -359,18 +431,24 @@ const iconComponents = {
   'icon07': icon07,
   'id': id,
   'id_1': id_1,
+  'idea': idea,
   'image': image,
   'images': images,
   'instagram_line': instagram_line,
   'invitation': invitation,
   'italic': italic,
   'item_name': item_name,
+  'items': items,
   'job': job,
+  'jobs': jobs,
   'jobs_ani': jobs_ani,
+  'jp': jp,
+  'juusando_logo': juusando_logo,
   'juusando_text': juusando_text,
   'kik': kik,
   'language': language,
   'left_arrow': left_arrow,
+  'light': light,
   'like': like,
   'line': line,
   'link': link,
@@ -385,11 +463,20 @@ const iconComponents = {
   'loading_ani': loading_ani,
   'lock': lock,
   'login': login,
+  'logo01': logo01,
+  'logo02': logo02,
+  'logo03': logo03,
+  'logo04': logo04,
+  'logo05': logo05,
+  'logo06': logo06,
   'logoo': logoo,
+  'logotype_en': logotype_en,
+  'logotype_jp': logotype_jp,
   'logout': logout,
   'mail': mail,
   'mail2': mail2,
   'mail_ani': mail_ani,
+  'mail_b': mail_b,
   'map': map,
   'mastodon': mastodon,
   'medium': medium,
@@ -407,17 +494,23 @@ const iconComponents = {
   'new_password': new_password,
   'news': news,
   'newsletter': newsletter,
+  'newz': newz,
+  'no_item': no_item,
   'norif_off': norif_off,
   'norif_on': norif_on,
   'notion': notion,
   'ok': ok,
   'order_az': order_az,
   'order_za': order_za,
+  'paid': paid,
   'password': password,
   'patreon': patreon,
   'pause': pause,
+  'pause2': pause2,
   'phone': phone,
   'pin': pin,
+  'pin_in': pin_in,
+  'pin_in_ani': pin_in_ani,
   'pinjob': pinjob,
   'pinjob_ani': pinjob_ani,
   'pinterest': pinterest,
@@ -425,6 +518,7 @@ const iconComponents = {
   'portfolio': portfolio,
   'poshmark': poshmark,
   'post': post,
+  'press': press,
   'press_kit': press_kit,
   'privacy': privacy,
   'producthunt': producthunt,
@@ -433,11 +527,15 @@ const iconComponents = {
   'pull_up': pull_up,
   'px500': px500,
   'radio_off': radio_off,
+  'randomcolorz': randomcolorz,
+  'randomcolorz_logo': randomcolorz_logo,
   'reddit': reddit,
   'register': register,
   'report': report,
   'reqest': reqest,
   'reset': reset,
+  'reset2': reset2,
+  'resos': resos,
   'restart': restart,
   'right_arrow': right_arrow,
   'right_arrow_ani': right_arrow_ani,
@@ -448,25 +546,36 @@ const iconComponents = {
   'search_ani': search_ani,
   'send': send,
   'send_ani': send_ani,
+  'separator': separator,
+  'service_b': service_b,
   'services': services,
+  'services_bb': services_bb,
   'setting': setting,
+  'setting_b': setting_b,
   'shake_hands': shake_hands,
+  'side_in': side_in,
+  'side_out': side_out,
   'signal': signal,
   'signup': signup,
+  'small': small,
   'small_arrow': small_arrow,
   'snapchat': snapchat,
   'soundcloud': soundcloud,
   'spotify': spotify,
   'stackoverflow': stackoverflow,
+  'start': start,
   'stop': stop,
   'subject': subject,
   'substack': substack,
   'tag': tag,
+  'talx': talx,
   'telegram': telegram,
   'text_small': text_small,
   'threads_line': threads_line,
   'tiktok_line': tiktok_line,
   'timer': timer,
+  'timer_logo': timer_logo,
+  'tool': tool,
   'trash': trash,
   'trash_ani': trash_ani,
   'twetter_line': twetter_line,
@@ -491,6 +600,7 @@ const iconComponents = {
   'uud_sns': uud_sns,
   'uxer_2_on': uxer_2_on,
   'uxer_simple': uxer_simple,
+  'uxers': uxers,
   'view': view,
   'view_link': view_link,
   'views': views,

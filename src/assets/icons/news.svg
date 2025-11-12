@@ -1,5 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24">
-  <g class="Iconz/news">
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"   d="M18.187 21H4.905C3.853 21 3 20.105 3 19V5c0-1.105.853-2 1.905-2h9.003c1.263 0 2.287 1.075 2.287 2.4v13.093c0 1.326.73 2.507 1.992 2.507Zm0 0h1.908C21.147 21 22 20.105 22 19v-.4c0-1.105-.853-2-1.905-2H18.91m-3.3-12.8h.965c1.052 0 1.905.895 1.905 2v12.8c0 1.206.848 2.204 1.952 2.374M6.43 14.5h6.335M6.43 17.3h4.049m-4.05-6.8v-4l4.05 4v-4" class="iconz"/>
-  </g>
+<svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"   d="M19 21H4.5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v6m0 2v-2m2 10a2 2 0 0 1-2-2v-8m2 10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2v0h-2v2m2 10v-9.6a.4.4 0 0 0-.4-.4h-1.6m-11 1.5h7m-7 2.5h7m-7 2.5h5m-6-11h9v3h-9v-3Z"/>
 </svg>

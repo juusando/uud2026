@@ -7,6 +7,7 @@ import countriesData from "../data/countries.json";
 import pb, { getAvatarBlob, logoutUser } from "../services/pocketbase";
 import Button from "../ui/atom/Button";
 import { useNavigate } from "react-router-dom";
+import Header from "../ui/compo/Header.jsx";
 
 const PublicUser = () => {
   const { username } = useParams();
@@ -57,7 +58,9 @@ const PublicUser = () => {
   if (!user) return null;
 
   return (
-    <div className="main_box">
+    <>
+      <Header />
+      <div className="main_box">
       <div className="auth-form">
         <div className="profile-field">
           <div>
@@ -122,7 +125,8 @@ const PublicUser = () => {
           />
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 
