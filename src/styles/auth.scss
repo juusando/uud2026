@@ -60,12 +60,14 @@
 
 .auth-form{
   width: 100%;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding: 24px 48px;
   border-radius: 16px;
   background-color: $G_00;
+  margin: 0 auto;
 }
 
 // .profile-field{ margin-bottom: 16px; }
