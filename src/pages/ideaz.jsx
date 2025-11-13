@@ -126,7 +126,7 @@ const Ideaz = () => {
       <Header />
       <div className="layout-hero">
         <FilterSideBar items={items} onChange={setFiltered} title="IDEAZ" logoIcon="idea" showPlatform={false} showPrice={false} showFavs favoritesSet={favSet} />
-        <CardsGrid items={visibleItems} error={error} totalCount={filtered.length} favoritesSet={favSet} onToggleFav={toggleFav} getKey={getKey} />
+        <CardsGrid items={visibleItems} error={error} totalCount={filtered.length} favoritesSet={favSet} onToggleFav={toggleFav} getKey={getKey} showEnd />
         <div ref={sentinelRef} className="tools-sentinel" />
       </div>
     </div>

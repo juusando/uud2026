@@ -142,6 +142,16 @@ const PublicUser = () => {
     }
   };
 
+  const favByPage = useMemo(() => {
+    const map = { tools: [], resos: [], ideaz: [], other: [] };
+    favItems.forEach((it) => {
+      const p = it._page || "other";
+      if (!map[p]) map[p] = [];
+      map[p].push(it);
+    });
+    return map;
+  }, [favItems]);
+
   const countryIso = useMemo(() => {
     if (!user?.country) return null;
     const match = countriesData.find((c) => c.label === user.country);
@@ -223,7 +233,26 @@ const PublicUser = () => {
           </div>
         </div>
   
-          <CardsGrid items={favItems} error={error} totalCount={favItems.length} favoritesSet={favSet} onToggleFav={toggleFav} getKey={getKey} />
+          <div className="content-box" style={{ width: "100%" }}>
+            {(["tools", "resos", "ideaz"]).map((p) => (
+              favByPage[p].length > 0 ? (
+                <div key={p} className={`fav-section fav-${p}`}>
+                  <div className="section-head">
+                    <div className="section-title">{p.toUpperCase()}</div>
+                    <span className="total">{favByPage[p].length}</span>
+                  </div>
+                  <CardsGrid
+                    items={favByPage[p]}
+                    error={error}
+                    totalCount={favByPage[p].length}
+                    favoritesSet={favSet}
+                    onToggleFav={toggleFav}
+                    getKey={getKey}
+                  />
+                </div>
+              ) : null
+            ))}
+          </div>
       
       </div>
     </>

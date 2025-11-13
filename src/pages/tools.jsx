@@ -168,7 +168,7 @@ const Tools = () => {
           </FilterSideBar.Platforms>
         </FilterSideBar>
 
-        <CardsGrid items={visibleItems} error={error} totalCount={filtered.length} favoritesSet={favSet} onToggleFav={toggleFav} getKey={getKey} />
+        <CardsGrid items={visibleItems} error={error} totalCount={filtered.length} favoritesSet={favSet} onToggleFav={toggleFav} getKey={getKey} showEnd />
         <div ref={sentinelRef} className="tools-sentinel" />
       </div>
     </div>

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Button from "../ui/atom/Button";
 import { useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../services/pocketbase";
+import Header from "../ui/compo/Header.jsx";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -13,6 +14,8 @@ const Home = () => {
     setAuthed(isAuthenticated());
   }, []);
   return (
+    <>
+    <Header />
     <div className="main_box">
       <div className="auth-form">
         <div className="profile-field">
@@ -36,6 +39,7 @@ const Home = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

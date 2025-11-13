@@ -13,8 +13,8 @@ const platformIcon = (p) => {
 
 const priceIcon = (p) => {
   const v = (p || "").toLowerCase();
-  if (v.includes("free")) return { name: "free", cls: "price-free" };
   if (v.includes("freemium")) return { name: "freemium", cls: "price-freemium" };
+  if (v.includes("free")) return { name: "free", cls: "price-free" };
   if (v.includes("paid")) return { name: "paid", cls: "price-paid" };
   return { name: "money", cls: "price-other" };
 };
@@ -35,7 +35,7 @@ const Card = ({ item, href, imgSrc, img, baseLogoPath = "/assets/cards_logo/", n
   return (
     <a href={finalHref} className="tool-card" target="_blank" rel="noopener noreferrer">
       <button type="button" className={`fav-btn ${isFav ? 'on' : 'off'}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); onToggleFav && onToggleFav({ itemKey: itemKey || finalHref, item: data, isFav }); }}>
-        <SvgIcn Name={isFav ? "fav_on" : "fav_non"} />
+        <SvgIcn Name={isFav ? "fav_on" : "fav_on"} />
       </button>
       <div className="tool-logo">
         {finalImgSrc ? (

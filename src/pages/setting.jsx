@@ -11,6 +11,7 @@ import CountryDropDown from "../ui/atom/CountryDropDown";
 import DropdownInput from "../ui/atom/DropDown";
 import TextArea from "../ui/atom/Textarea";
 import pb, { getCurrentUser, isAuthenticated, updateUser, updatePassword, requestEmailChange } from "../services/pocketbase";
+import Header from "../ui/compo/Header.jsx";
 
 const Setting = () => {
   const navigate = useNavigate();
@@ -127,6 +128,8 @@ const Setting = () => {
   };
 
   return (
+    <>
+    <Header />
     <div className="main_box">
       {status && (
         <Alert message={status} type={statusType} isVisible={true} onClose={() => setStatus("")} />
@@ -169,6 +172,7 @@ const Setting = () => {
         </Popup>
       )}
     </div>
+    </>
   );
 };
 

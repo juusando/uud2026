@@ -22,6 +22,21 @@
   box-sizing: border-box;
 }
 
+.cards-grid.cards-row {
+  flex-wrap: wrap;
+  overflow-x: auto;
+  background-color: transparent;
+  min-height: auto;
+}
+
+.fav-section .cards-grid {
+  flex-wrap: wrap;
+  overflow-x: auto;
+  background-color: transparent;
+  min-height: auto;
+  padding: 8px 0;
+}
+
 .cards-grid.empty {
   min-height: calc(100vh - 78px);
 }
@@ -170,11 +185,12 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 32px;
-  padding: 0 8px;
-  border-radius: 16px;
-  background: $G_01;
-  font-size: 13px;
+  height: 28px;
+  padding: 0 4px;
+  border-radius: 8px;
+  border: 1.4px solid $G_04;
+  font-size: 14px;
+  font-weight: 400;
   color: $Dark;
 }
 
@@ -237,11 +253,11 @@
   justify-content: start;
   gap: 20px;
   width: 100%;
-  max-width: 340px;
+  max-width: 320px;
   min-width: 280px;
   background: $White;
   border-radius: 12px;
-  padding: 32px;
+  padding: 40px;
   position: sticky;
   top: 80px;
   align-self: flex-start;
@@ -328,9 +344,10 @@
   gap: 6px;
 
   .chip {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 4px;
     height: 38px;
     padding: 0 8px;
     border-radius: 8px;
@@ -349,6 +366,16 @@
       justify-content: end;
       height: 18px;
       text-align: right;
+    }
+
+    .chip-left-icon{
+          display: flex;
+    align-items: center;
+    justify-content: center;
+
+      svg{
+        width: 22px;
+      }
     }
 
   }

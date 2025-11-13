@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../ui/atom/Button";
-import MenuDropdown from "../../ui/atom/MenuDropdown";
 import pb, { getCurrentUser, isAuthenticated, getAvatarBlob, logoutUser } from "../../services/pocketbase";
 import "../../styles/compo.scss";
 import SvgIcn from "../../data/IconCompo";
@@ -47,29 +46,23 @@ const Header = () => {
         </Button>
       
       <nav className="center-header">
-        <Button className="nav-btn" iconL="tool" to="/tools"><span>Tools</span></Button>
-        <Button className="nav-btn" iconL="resos" to="/resos"><span>Resos</span></Button>
-        <Button className="nav-btn" iconL="idea" to="/ideaz"><span>Ideaz</span></Button>
-        <Button className="nav-btn" iconL="apps" to="/apps"><span>Apps</span></Button>
-        <Button className="nav-btn" iconL="talx" to="/talx"><span>Talx</span></Button>
+        <Button className="nav-btn" iconL="tool" to="/tools">Tools</Button>
+        <Button className="nav-btn" iconL="resos" to="/resos">Resos</Button>
+        <Button className="nav-btn" iconL="idea" to="/ideaz">Ideaz</Button>
+        <Button className="nav-btn" iconL="apps" to="/apps">Apps</Button>
+        <Button className="nav-btn" iconL="talx" to="/talx">Talx</Button>
       </nav>
       <div className="right-header">
         {loggedIn ? (
-          <div className="user-area">
-            <MenuDropdown
-              trigger={avatarUrl ? (
+          <>
+            {avatarUrl ? (
+              <div type="button" className="avatar-btn" onClick={() => { if (user?.username) navigate(`/${user.username}`); }}>
                 <img className="avatar" src={avatarUrl} alt="User" />
-              ) : (
-                <Button className="nav-btn" iconL="user_circle"/>
-              )}
-              onTriggerClick={() => { if (user?.username) navigate(`/${user.username}`); }}
-              items={[
-                { label: "My Card", iconR: "account", to: "/home" },
-                { label: "Setting", iconR: "setting", to: "/home" },
-                { label: "Logout", iconR: "logout", onClick: () => logoutUser() },
-              ]}
-            />
-          </div>
+              </div>
+            ) : (
+              <Button className="nav-btn" iconL="user_circle" onClick={() => { if (user?.username) navigate(`/${user.username}`); }} />
+            )}
+          </>
         ) : (
           <div className="auth-actions">
             <Button  className="" iconL="login" to="/login"><span>Access</span></Button>

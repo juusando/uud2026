@@ -6,6 +6,15 @@ import "../../styles/atom.scss";
 
 const normalize = (s) => (s || "").toLowerCase();
 const splitList = (s) => String(s || "").split(",").map((x) => x.trim()).filter(Boolean);
+const platformAliases = (value) => {
+  const v = normalize(value);
+  if (v.includes("mac") || v.includes("apple") || v.includes("ios")) return ["mac", "apple", "ios"];
+  if (v.includes("windows") || v.includes("win")) return ["windows", "win"];
+  if (v.includes("browser") || v.includes("web")) return ["browser", "web"];
+  if (v.includes("android")) return ["android"];
+  if (v.includes("linux")) return ["linux"];
+  return [v];
+};
 
 const extractValues = (children) => {
   const vals = [];
@@ -91,7 +100,11 @@ const FilterSideBar = ({ items = [], onChange, className = "", showSearch = true
       const key = it.link || it.name || it.img;
       const isFav = favoritesSet && favoritesSet.has(key);
       const matchesTag = tag === "All" ? true : (tag === "Favs" ? isFav : tags.map(normalize).includes(normalize(tag)));
-      const matchesPlatform = plat.length === 0 ? true : plat.some((p) => plats.map(normalize).includes(normalize(p)));
+      const platsNorm = plats.map(normalize);
+      const matchesPlatform = plat.length === 0 ? true : plat.some((p) => {
+        const aliases = platformAliases(p);
+        return aliases.some((a) => platsNorm.includes(a));
+      });
       const matchesPrice = pr.length === 0 ? true : pr.some((p) => price.includes(normalize(p)));
       return matchesQuery && matchesTag && matchesPlatform && matchesPrice;
     });
@@ -196,13 +209,13 @@ const FilterSideBar = ({ items = [], onChange, className = "", showSearch = true
           </div>
         </div>
       )}
-
+{/* 
       <div className="filter-actions">
         <button className="chip reset" onClick={resetAll}>
           <SvgIcn Name="trash" />
           <span>Reset</span>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

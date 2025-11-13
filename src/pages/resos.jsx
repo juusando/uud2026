@@ -125,7 +125,7 @@ const Resos = () => {
       <div className="layout-hero">
         <FilterSideBar items={items} onChange={setFiltered} title="RESOS" logoIcon="resos" showPlatform={false} showPrice={false} showFavs favoritesSet={favSet} />
 
-        <CardsGrid items={visibleItems} error={error} totalCount={filtered.length} favoritesSet={favSet} onToggleFav={toggleFav} getKey={getKey} />
+        <CardsGrid items={visibleItems} error={error} totalCount={filtered.length} favoritesSet={favSet} onToggleFav={toggleFav} getKey={getKey} showEnd />
         <div ref={sentinelRef} className="tools-sentinel" />
       </div>
     </div>

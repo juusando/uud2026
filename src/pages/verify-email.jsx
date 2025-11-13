@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import pb from '../services/pocketbase';
 import "../styles/atom.scss";
 import Alert from '../ui/atom/Alert.jsx';
+import Header from "../ui/compo/Header.jsx";
 
 const VerifyEmail = () => {
   const location = useLocation();
@@ -70,6 +71,8 @@ const VerifyEmail = () => {
   const type = status === 'success' ? 'success' : status === 'error' ? 'error' : 'info';
 
   return (
+    <>
+    <Header />
     <div className="lab-container" style={{ textAlign: 'center', padding: '50px 20px' }}>
       <h1>Email Verification</h1>
       <Alert message={message} type={type} isVisible={true} />
@@ -90,6 +93,7 @@ const VerifyEmail = () => {
         </button>
       )}
     </div>
+    </>
   );
 };
 
