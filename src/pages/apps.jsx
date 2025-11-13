@@ -5,7 +5,7 @@ import Header from "../ui/compo/Header.jsx";
 
 const Apps = () => {
   return (
-    <>
+    <div className="page page--apps">
       <Header />
       <div className="main_box">
         <div className="auth-form">
@@ -14,7 +14,7 @@ const Apps = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

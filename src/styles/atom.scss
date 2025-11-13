@@ -203,7 +203,7 @@ form{
   flex-direction: column;
   align-items: start;
   width: 100%;
-  gap: 5px;
+  height: 48px;
 
   .input-label{
     font-size: 18px;
@@ -224,6 +224,10 @@ form{
   background-color: $White;
   width: 100%;
   box-sizing: border-box;
+
+  input{
+  font-size: 17px;
+  }
 
   &.focused {
     border-color: $Blue;
@@ -255,11 +259,29 @@ form{
     display: flex;
     flex: 1;
     align-items: center;
+    position: relative;
   }
 
   .input-prefix {
     color: $Blue;
   }
+
+  // .input-suffix {
+  //   position: absolute;
+  //   right: 8px;
+  //   top: 50%;
+  //   transform: translateY(-50%);
+  //   background: $G_01;
+  //   border: 1px solid $G_03;
+  //   color: $Dark;
+  //   border-radius: 12px;
+  //   height: 24px;
+  //   padding: 0 8px;
+  //   font-size: 12px;
+  //   display: inline-flex;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
 
   .input {
     flex: 1;
@@ -423,8 +445,8 @@ form{
     align-items: center;
     border: 2px solid $G_04;
     color: $G_04;
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     border-radius: 8px;
     padding: 4px;
     background-color: $White;
@@ -449,6 +471,20 @@ form{
   .checkbox-input {
     cursor: pointer;
   }
+
+  .checkbox-right-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    color: $G_07;
+
+    svg { width: 22px; height: 22px; }
+  }
+
+  .checkbox-right-icon.free { color: #16a34a; }
+  .checkbox-right-icon.freemium { color: #f59e0b; }
+  .checkbox-right-icon.paid { color: #ef4444; }
 
 }
 
@@ -1260,3 +1296,6 @@ form{
 
 
 // - - - - - - - - FAVS PAGE - - - - - - - - -
+:root {
+  --page-color: $Orange;
+}

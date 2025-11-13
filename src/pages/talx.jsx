@@ -5,7 +5,7 @@ import Header from "../ui/compo/Header.jsx";
 
 const Talx = () => {
   return (
-    <>
+    <div className="page page--talx">
       <Header />
       <div className="main_box">
         <div className="auth-form">
@@ -14,7 +14,7 @@ const Talx = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,35 +1,56 @@
-import React, { useState } from 'react'; // Import React and useState
-import "../../styles/atom.scss"; // Adjust the path as needed
-import SvgIcn from '../../data/IconCompo'; // Import the SvgIcn component to render icons
+import React, { useState } from 'react';
+import "../../styles/atom.scss";
+import SvgIcn from '../../data/IconCompo';
 
-const CheckboxInput = ({ 
-  label, 
-  className = '', 
-  iconChecked, 
-  iconUnchecked, 
-  children 
+const CheckboxInput = ({
+  label,
+  className = '',
+  iconChecked,
+  iconUnchecked,
+  children,
+  checked,
+  onChange,
+  hideInnerIcon = false,
+  rightIcon,
+  rightIconClass,
 }) => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [uncontrolledChecked, setUncontrolledChecked] = useState(false);
+  const isControlled = typeof checked === 'boolean';
+  const actualChecked = isControlled ? checked : uncontrolledChecked;
 
   const handleCheckboxChange = () => {
-    setIsChecked(prev => !prev); // Toggle the checkbox state
+    if (isControlled) {
+      onChange?.(!checked);
+    } else {
+      setUncontrolledChecked(prev => {
+        const next = !prev;
+        onChange?.(next);
+        return next;
+      });
+    }
   };
 
   return (
     <label className={`checkbox-icon-box ${className}`} onClick={handleCheckboxChange}>
-      <span className={`custom-checkbox ${isChecked ? 'checked' : ''}`}>
-        {/* Render custom icon based on checked state, use iconChecked as fallback when iconUnchecked is not provided */}
-        {isChecked ? <SvgIcn Name={iconChecked} /> : <SvgIcn Name={iconUnchecked || iconChecked} />}
+      <span className={`custom-checkbox ${actualChecked ? 'checked' : ''}`}>
+        {!hideInnerIcon && actualChecked && (
+          <SvgIcn Name={iconChecked} />
+        )}
       </span>
       <input
         type="checkbox"
-        checked={isChecked}
+        checked={actualChecked}
         onChange={handleCheckboxChange}
         className="checkbox-input"
-        style={{ display: 'none' }} // Hide the default checkbox
+        style={{ display: 'none' }}
       />
       {label}
-      {children} {/* Render additional children */}
+      {children}
+      {rightIcon && (
+        <span className={`checkbox-right-icon ${rightIconClass || ''}`}>
+          <SvgIcn Name={rightIcon} />
+        </span>
+      )}
     </label>
   );
 };

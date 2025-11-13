@@ -11,6 +11,7 @@ const Input = ({
   className,
   label,
   prefix,
+  suffix,
   children,
   id,
   name,
@@ -60,6 +61,7 @@ const Input = ({
             className="input"
             placeholder={placeholder} 
           />
+          {suffix && <span className="input-suffix">{suffix}</span>}
         </div>
         {iconR && (
           <span className="icon right-icon">

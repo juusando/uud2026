@@ -1,14 +1,49 @@
 @import 'vars';
 
-// - - - - - - - - - - TOOLS GRID - - - - - - - - - -
-.tools-grid {
+.tools-layout {
   display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+// - - - - - - - - - - TOOLS GRID - - - - - - - - - -
+.cards-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-content: flex-start;
   flex-wrap: wrap;
   gap: 10px;
   width: 100%;
-  justify-content: center;
+  // height: 100vh;
+
   background-color: $G_01;
   padding: 16px;
+  min-height: calc(100vh - 78px);
+  box-sizing: border-box;
+}
+
+.cards-grid.empty {
+  min-height: calc(100vh - 78px);
+}
+
+.cards-grid .empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: inherit;
+  gap: 8px;
+}
+.cards-grid .empty-state .empty-icon svg {
+  width: 200px;
+  height: 200px;
+  color: var(--page-color);
+}
+
+.cards-grid .empty-state .empty-text {
+  font-size: 20px;
+  color: $G_07;
 }
 
 .tool-card {
@@ -21,12 +56,12 @@
   background: $White;
   text-decoration: none;
   color: $Dark;
-  transition: transform .1s ease, box-shadow .1s ease, opacity .1s ease;
   opacity: 0;
   animation: fadeIn .4s ease forwards;
   width: 260px;
+  height: fit-content;
   box-sizing: border-box;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.04);
 
 }
 
@@ -169,3 +204,176 @@
 .tool-icon.price-paid svg {
   color: #6b21a8;
 }
+
+// - - - - - - - - - -  FILTER - - - - - - - - - - 
+
+.filter-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 20px;
+  width: 280px;
+  min-width: 360px;
+  background: $White;
+  border-radius: 12px;
+  padding: 40px;
+  position: sticky;
+  top: 80px;
+  align-self: flex-start;
+  height: calc(100vh - 96px);
+  overflow: hidden;
+}
+
+.filter-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 8px;
+}
+
+.filter-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-logo svg {
+  width: 66px;
+  height: 66px;
+  color: var(--page-color);
+}
+
+.filter-logo img {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+
+.filter-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--page-color);
+  letter-spacing: 1px;
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+}
+
+
+
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: $G_01;
+  border: 1px solid $G_03;
+  border-radius: 16px;
+  height: 32px;
+  padding: 0 10px;
+}
+
+.count-badge .sep {
+  color: $G_06;
+}
+
+.count-badge .total {
+  color: $G_07;
+}
+
+.section-title {
+  font-size: 13px;
+  color: $G_07;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 38px;
+    padding: 0 8px;
+    border-radius: 8px;
+    background: $White;
+    border: 1px solid $G_04;
+    color: $Dark;
+    cursor: pointer;
+
+    span{ font-size: 16px; }
+  }
+}
+
+.chips-check {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+
+.chip.selected {
+  background: var(--page-color);
+  border-color: var(--page-color);
+  color: $White;
+}
+
+.chip.reset {
+  background: $G_01;
+  color: $Dark;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.filter-sidebar .checkbox-icon-box {
+  gap: 8px;
+  font-size: 17px;
+    .checkbox-right-icon{
+    margin-left: 0;
+   
+    svg{
+      width: 28px;
+      height: 28px;
+    }
+  }
+}
+
+.filter-sidebar .custom-checkbox {
+  border-radius: 8px;
+  margin-right: 0px;
+}
+
+.filter-sidebar .custom-checkbox.checked {
+  background-color: var(--page-color);
+  border-color: var(--page-color);
+  color: $White;
+}
+
+.chip.reset {
+  background: $G_01;
+  color: $Dark;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+.chips-check { display: flex; flex-wrap: wrap; gap: 8px; }

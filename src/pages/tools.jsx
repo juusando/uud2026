@@ -4,6 +4,8 @@ import "../styles/cards.scss";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Header from "../ui/compo/Header.jsx";
 import Card from "../ui/atom/Card.jsx";
+import FilterSideBar from "../ui/compo/FilterSideBar.jsx";
+import SvgIcn from "../data/IconCompo";
 
 const parseCSV = (text) => {
   const lines = text.split(/\r?\n/).filter((l) => l.trim().length > 0);
@@ -59,6 +61,7 @@ const parseCSVLine = (line) => {
 
 const Tools = () => {
   const [items, setItems] = useState([]);
+  const [filtered, setFiltered] = useState([]);
   const [visibleCount, setVisibleCount] = useState(40);
   const [error, setError] = useState("");
   const sentinelRef = useRef(null);
@@ -75,10 +78,12 @@ const Tools = () => {
           link: r.link || "",
           engDescription: r.engDescription || "",
           tags: r.tags || "",
+          filterTag: r.filterTag || "",
           platform: r.platform || "",
           price: r.price || "",
         }));
         setItems(mapped);
+        setFiltered(mapped);
       } catch (e) {
         setError("Failed to load tools");
       }
@@ -92,30 +97,63 @@ const Tools = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setVisibleCount((c) => Math.min(c + 60, items.length));
+          setVisibleCount((c) => Math.min(c + 60, filtered.length));
         }
       });
     }, { rootMargin: "600px" });
     observer.observe(el);
     return () => observer.disconnect();
-  }, [items.length]);
+  }, [filtered.length]);
 
-  const visibleItems = useMemo(() => items.slice(0, visibleCount), [items, visibleCount]);
+  const visibleItems = useMemo(() => filtered.slice(0, visibleCount), [filtered, visibleCount]);
 
 
   return (
-    <>
+    <div className="page tools-page page--tools">
       <Header />
-      <>
-        <div className="tools-grid">
+      <div className="tools-layout">
+        {/* <FilterSideBar items={items} onChange={(list) => { setFiltered(list); setVisibleCount(Math.min(40, list.length)); }} /> */}
+
+        <FilterSideBar items={items} onChange={setFiltered} title="TOOLS" logoIcon="tool">
+          <FilterSideBar.Tags>
+                <span>UX Design</span>
+                <span>UI Design</span>
+                <span>Image</span>
+                <span>Color</span>
+                <span>Icon</span>
+                <span>Font</span>
+                <span>Video</span>
+                <span>Sound</span>
+                <span>Victor</span>
+                <span>Animation</span>
+                <span>Ai</span>
+                <span>Productivity</span>
+                <span>No Code</span>
+                <span>Others</span>
+          </FilterSideBar.Tags>
+          <FilterSideBar.Platforms>
+            <span>Mac</span>
+            <span>Windows</span>
+            <span>Browser</span>
+          </FilterSideBar.Platforms>
+        </FilterSideBar>
+
+        <div className={`cards-grid ${!error && visibleItems.length === 0 ? 'empty' : ''}`}>
           {error && <div className="status status--error">{error}</div>}
-          {visibleItems.map((it, idx) => (
-            <Card key={idx} item={it} />
-          ))}
+          {(!error && visibleItems.length === 0) ? (
+            <div className="empty-state">
+              <div className="empty-icon"><SvgIcn Name="no_item" /></div>
+              {/* <div className="empty-text">No results found</div> */}
+            </div>
+          ) : (
+            visibleItems.map((it, idx) => (
+              <Card key={idx} item={it} />
+            ))
+          )}
         </div>
         <div ref={sentinelRef} className="tools-sentinel" />
-      </>
-    </>
+      </div>
+    </div>
   );
 };
 

@@ -54,6 +54,20 @@ svg{
     stroke-width: 1.5px;
 }
 
+/* Page color system */
+:root {
+  --page-color: #{$Orange};
+  --color-blue: #{$Blue};
+  --color-purple: #{$Purple};
+  --color-pink: #{$Pink};
+  --color-yellow: #{$Yellow};
+}
+.page--tools { --page-color: var(--color-blue); }
+.page--resos { --page-color: var(--color-purple); }
+.page--ideaz { --page-color: var(--color-pink); }
+.page--apps  { --page-color: var(--color-blue); }
+.page--talx  { --page-color: var(--color-yellow); }
+
 .home{
     display: flex;
     flex-direction: column;
@@ -65,4 +79,3 @@ svg{
     text-align: center;
 
 }
-

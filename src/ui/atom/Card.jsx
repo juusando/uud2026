@@ -3,9 +3,9 @@ import SvgIcn from "../../data/IconCompo";
 
 const platformIcon = (p) => {
   const v = (p || "").toLowerCase();
-  if (v.includes("windows")) return "windows_fill";
-  if (v.includes("apple") || v.includes("mac") || v.includes("ios")) return "apple_fill";
-  if (v.includes("android")) return "android_fill";
+  if (v.includes("windows")) return "windows";
+  if (v.includes("apple") || v.includes("mac") || v.includes("ios")) return "apple";
+  if (v.includes("android")) return "android";
   if (v.includes("linux")) return "linux";
   if (v.includes("browser") || v.includes("web")) return "browser";
   return null;
