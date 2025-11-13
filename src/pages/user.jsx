@@ -60,71 +60,74 @@ const PublicUser = () => {
   return (
     <>
       <Header />
-      <div className="main_box">
-      <div className="auth-form">
-        <div className="profile-field">
-          <div>
-            {avatarUrl ? (
-              <img
-                src={avatarUrl}
-                alt="User Profile"
-                className="profile-avatar"
-                onError={(e) => {
-                  e.target.style.display = "none";
-                  e.target.nextSibling.style.display = "flex";
-                }}
-              />
-            ) : null}
-            <div
-              className="profile-avatar-fallback"
-              style={{ display: avatarUrl ? "none" : "flex" }}
-            >
-              No Photo
-              <br />
-              Uploaded
+      <div className="layout-hero">
+        <div className="sidebar">
+          <div className="profile-field">
+            <div>
+              {avatarUrl ? (
+                <img
+                  src={avatarUrl}
+                  alt="User Profile"
+                  className="profile-avatar"
+                  onError={(e) => {
+                    e.target.style.display = "none";
+                    e.target.nextSibling.style.display = "flex";
+                  }}
+                />
+              ) : null}
+              <div
+                className="profile-avatar-fallback"
+                style={{ display: avatarUrl ? "none" : "flex" }}
+              >
+                No Photo
+                <br />
+                Uploaded
+              </div>
             </div>
           </div>
-      </div>
 
-        <div className="profile-field">
-          <span>{user.name || "Not provided"}</span>
-        </div>
-        <div className="profile-field">
-          <span>@{user.username}</span>
-        </div>
-        <div className="profile-field word">
-          <span>{user.word || "Not provided"}</span>
-        </div>
-        <div className="profile-field">
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            {countryIso && (
-              <CountryFlag
-                Name={countryIso.toLowerCase()}
-                style={{ width: 32, height: 32, borderRadius: "50%" }}
-              />
-            )}
-            <span>{(user.country || "Not provided").slice(0, 16)}</span>
+          <div className="profile-field">
+            <span>{user.name || "Not provided"}</span>
+          </div>
+          <div className="profile-field">
+            <span>@{user.username}</span>
+          </div>
+          <div className="profile-field word">
+            <span>{user.word || "Not provided"}</span>
+          </div>
+          <div className="profile-field">
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              {countryIso && (
+                <CountryFlag
+                  Name={countryIso.toLowerCase()}
+                  style={{ width: 32, height: 32, borderRadius: "50%" }}
+                />
+              )}
+              <span>{(user.country || "Not provided").slice(0, 16)}</span>
+            </div>
+          </div>
+          <div className="profile-field">
+            <span>{user.role || "Not provided"}</span>
+          </div>
+
+          <div className="button-box">
+            <Button
+              onClick={() => navigate(`/setting`)}
+              type="button"
+              iconL="setting"
+              className="nav-btn"
+            />
+            <Button
+              onClick={() => { logoutUser(); navigate('/'); }}
+              type="button"
+              iconL="logout"
+              className="nav-btn"
+            />
           </div>
         </div>
-        <div className="profile-field">
-          <span>{user.role || "Not provided"}</span>
-        </div>
-
-        <div className="button-box">
-          <Button
-            onClick={() => navigate(`/setting`)}
-            type="button"
-            iconL="setting"
-            className="nav-btn"
-          />
-          <Button
-            onClick={() => { logoutUser(); navigate('/'); }}
-            type="button"
-            iconL="logout"
-            className="nav-btn"
-          />
-        </div>
-      </div>
+        <div className="content-box">
+          USER FAVED CARDS
+          </div>
       </div>
     </>
   );

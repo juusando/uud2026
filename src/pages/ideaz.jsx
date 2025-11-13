@@ -104,7 +104,7 @@ const Ideaz = () => {
   return (
     <div className="page page--ideaz">
       <Header />
-      <div className="tools-layout">
+      <div className="layout-hero">
         <FilterSideBar items={items} onChange={setFiltered} title="IDEAZ" logoIcon="idea" showPlatform={false} showPrice={false} />
         <CardsGrid items={visibleItems} error={error} totalCount={filtered.length} />
         <div ref={sentinelRef} className="tools-sentinel" />

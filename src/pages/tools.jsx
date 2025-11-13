@@ -121,7 +121,7 @@ const Tools = () => {
   return (
     <div className="page tools-page page--tools">
       <Header />
-      <div className="tools-layout">
+      <div className="layout-hero">
         {/* <FilterSideBar items={items} onChange={(list) => { setFiltered(list); setVisibleCount(Math.min(40, list.length)); }} /> */}
 
         <FilterSideBar items={items} onChange={setFiltered} title="TOOLS" logoIcon="tool">

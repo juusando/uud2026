@@ -102,7 +102,7 @@ const Resos = () => {
   return (
     <div className="page page--resos">
       <Header />
-      <div className="tools-layout">
+      <div className="layout-hero">
         <FilterSideBar items={items} onChange={setFiltered} title="RESOS" logoIcon="resos" showPlatform={false} showPrice={false} />
 
         <CardsGrid items={visibleItems} error={error} totalCount={filtered.length} />
