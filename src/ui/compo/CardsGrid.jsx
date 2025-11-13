@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../atom/Card.jsx";
 import SvgIcn from "../../data/IconCompo";
 
-const CardsGrid = ({ items = [], error = "", totalCount = 0, className = "" }) => {
+const CardsGrid = ({ items = [], error = "", totalCount = 0, className = "", favoritesSet, onToggleFav, getKey }) => {
   const showEmpty = !error && items.length === 0;
   const showEnd = !error && totalCount > 0 && items.length >= totalCount;
 
@@ -14,15 +14,16 @@ const CardsGrid = ({ items = [], error = "", totalCount = 0, className = "" }) =
           <div className="empty-icon"><SvgIcn Name="no_item" /></div>
         </div>
       ) : (
-        items.map((it, idx) => (
-          <Card key={idx} item={it} />
-        ))
+        items.map((it, idx) => {
+          const key = getKey ? getKey(it) : (it.link || it.name);
+          const isFav = favoritesSet ? favoritesSet.has(key) : false;
+          return <Card key={idx} item={it} itemKey={key} isFav={isFav} onToggleFav={onToggleFav} />;
+        })
       )}
       {showEnd && (
         <div className="end-state">
-          {/* <div className="end-text">No More Cards</div> */}
-                    <div className="end-icon"><SvgIcn Name="no_data" /></div>
-
+          <div className="end-icon"><SvgIcn Name="stop" /></div>
+          <div className="end-text">No more items</div>
         </div>
       )}
     </div>

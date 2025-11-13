@@ -4,6 +4,7 @@ import "../styles/cards.scss";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Header from "../ui/compo/Header.jsx";
 import CardsGrid from "../ui/compo/CardsGrid.jsx";
+import { getUserFavorites, addUserFavorite, removeUserFavorite } from "../services/pocketbase";
 import FilterSideBar from "../ui/compo/FilterSideBar.jsx";
 
 const parseCSV = (text) => {
@@ -48,6 +49,22 @@ const Resos = () => {
   const [visibleCount, setVisibleCount] = useState(40);
   const [error, setError] = useState("");
   const sentinelRef = useRef(null);
+  const [favSet, setFavSet] = useState(new Set());
+
+  const getKey = (it) => it.link || it.name || it.img;
+  const toggleFav = async ({ itemKey, item, isFav }) => {
+    const key = itemKey || getKey(item);
+    setFavSet((prev) => {
+      const next = new Set(prev);
+      if (isFav) next.delete(key); else next.add(key);
+      return next;
+    });
+    if (isFav) {
+      await removeUserFavorite(key, "resos");
+    } else {
+      await addUserFavorite({ itemKey: key, page: "resos" });
+    }
+  };
 
   useEffect(() => {
     const load = async () => {
@@ -65,6 +82,9 @@ const Resos = () => {
         }));
         setItems(mapped);
         setFiltered(mapped);
+        const favs = await getUserFavorites("resos");
+        const keys = new Set(favs.map((f) => f.itemKey));
+        setFavSet(keys);
       } catch (_) {
         setError("Failed to load resources");
       }
@@ -103,9 +123,9 @@ const Resos = () => {
     <div className="page page--resos">
       <Header />
       <div className="layout-hero">
-        <FilterSideBar items={items} onChange={setFiltered} title="RESOS" logoIcon="resos" showPlatform={false} showPrice={false} />
+        <FilterSideBar items={items} onChange={setFiltered} title="RESOS" logoIcon="resos" showPlatform={false} showPrice={false} showFavs favoritesSet={favSet} />
 
-        <CardsGrid items={visibleItems} error={error} totalCount={filtered.length} />
+        <CardsGrid items={visibleItems} error={error} totalCount={filtered.length} favoritesSet={favSet} onToggleFav={toggleFav} getKey={getKey} />
         <div ref={sentinelRef} className="tools-sentinel" />
       </div>
     </div>

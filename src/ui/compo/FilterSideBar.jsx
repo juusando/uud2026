@@ -27,7 +27,7 @@ const extractValues = (children) => {
   return vals;
 };
 
-const FilterSideBar = ({ items = [], onChange, className = "", showSearch = true, showTags = true, showPlatform = true, showPrice = true, title, logoIcon, logoSrc, children }) => {
+const FilterSideBar = ({ items = [], onChange, className = "", showSearch = true, showTags = true, showPlatform = true, showPrice = true, showFavs = true, favoritesSet, title, logoIcon, logoSrc, children }) => {
   const [query, setQuery] = useState("");
   const [tag, setTag] = useState("All");
   const [platforms, setPlatforms] = useState(new Set());
@@ -42,11 +42,17 @@ const FilterSideBar = ({ items = [], onChange, className = "", showSearch = true
   }, [children]);
 
   const uniqueTags = useMemo(() => {
-    if (tagsFromChildren && tagsFromChildren.length > 0) return ["All", ...tagsFromChildren];
-    const set = new Set();
-    items.forEach((it) => splitList(it.filterTag).forEach((t) => set.add(t)));
-    return ["All", ...Array.from(set).sort()];
-  }, [items, tagsFromChildren]);
+    let tags;
+    if (tagsFromChildren && tagsFromChildren.length > 0) {
+      tags = ["All", ...tagsFromChildren];
+    } else {
+      const set = new Set();
+      items.forEach((it) => splitList(it.filterTag).forEach((t) => set.add(t)));
+      tags = ["All", ...Array.from(set).sort()];
+    }
+    if (showFavs) tags.splice(1, 0, "Favs");
+    return tags;
+  }, [items, tagsFromChildren, showFavs]);
 
   const platformChildren = useMemo(() => {
     const slot = React.Children.toArray(children).find((c) => c && c.type === FilterSideBar.Platforms);
@@ -82,7 +88,9 @@ const FilterSideBar = ({ items = [], onChange, className = "", showSearch = true
       const price = normalize(it.price);
 
       const matchesQuery = q ? (name.includes(q) || desc.includes(q)) : true;
-      const matchesTag = tag === "All" ? true : tags.map(normalize).includes(normalize(tag));
+      const key = it.link || it.name || it.img;
+      const isFav = favoritesSet && favoritesSet.has(key);
+      const matchesTag = tag === "All" ? true : (tag === "Favs" ? isFav : tags.map(normalize).includes(normalize(tag)));
       const matchesPlatform = plat.length === 0 ? true : plat.some((p) => plats.map(normalize).includes(normalize(p)));
       const matchesPrice = pr.length === 0 ? true : pr.some((p) => price.includes(normalize(p)));
       return matchesQuery && matchesTag && matchesPlatform && matchesPrice;
@@ -136,6 +144,9 @@ const FilterSideBar = ({ items = [], onChange, className = "", showSearch = true
             {uniqueTags.map((t) => (
               <button key={t} className={`chip ${tag === t ? "selected" : ""}`} onClick={() => setTag(t)}>
                 <span>{t}</span>
+                {t === "Favs" && favoritesSet && (
+                  <span className="fav-count">{favoritesSet.size}</span>
+                )}
               </button>
             ))}
           </div>

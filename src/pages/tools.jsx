@@ -4,6 +4,7 @@ import "../styles/cards.scss";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Header from "../ui/compo/Header.jsx";
 import CardsGrid from "../ui/compo/CardsGrid.jsx";
+import pb, { getUserFavorites, addUserFavorite, removeUserFavorite } from "../services/pocketbase";
 import FilterSideBar from "../ui/compo/FilterSideBar.jsx";
 
 const parseCSV = (text) => {
@@ -64,6 +65,22 @@ const Tools = () => {
   const [visibleCount, setVisibleCount] = useState(40);
   const [error, setError] = useState("");
   const sentinelRef = useRef(null);
+  const [favSet, setFavSet] = useState(new Set());
+
+  const getKey = (it) => it.link || it.name || it.img;
+  const toggleFav = async ({ itemKey, item, isFav }) => {
+    const key = itemKey || getKey(item);
+    setFavSet((prev) => {
+      const next = new Set(prev);
+      if (isFav) next.delete(key); else next.add(key);
+      return next;
+    });
+    if (isFav) {
+      await removeUserFavorite(key, "tools");
+    } else {
+      await addUserFavorite({ itemKey: key, page: "tools" });
+    }
+  };
 
   useEffect(() => {
     const load = async () => {
@@ -83,6 +100,9 @@ const Tools = () => {
         }));
         setItems(mapped);
         setFiltered(mapped);
+        const favs = await getUserFavorites("tools");
+        const keys = new Set(favs.map((f) => f.itemKey));
+        setFavSet(keys);
       } catch (e) {
         setError("Failed to load tools");
       }
@@ -124,7 +144,7 @@ const Tools = () => {
       <div className="layout-hero">
         {/* <FilterSideBar items={items} onChange={(list) => { setFiltered(list); setVisibleCount(Math.min(40, list.length)); }} /> */}
 
-        <FilterSideBar items={items} onChange={setFiltered} title="TOOLS" logoIcon="tool">
+        <FilterSideBar items={items} onChange={setFiltered} title="TOOLS" logoIcon="tool" showFavs favoritesSet={favSet}>
           <FilterSideBar.Tags>
                 <span>UX Design</span>
                 <span>UI Design</span>
@@ -148,7 +168,7 @@ const Tools = () => {
           </FilterSideBar.Platforms>
         </FilterSideBar>
 
-        <CardsGrid items={visibleItems} error={error} totalCount={filtered.length} />
+        <CardsGrid items={visibleItems} error={error} totalCount={filtered.length} favoritesSet={favSet} onToggleFav={toggleFav} getKey={getKey} />
         <div ref={sentinelRef} className="tools-sentinel" />
       </div>
     </div>

@@ -483,3 +483,58 @@ export const updatePassword = async (userId, oldPassword, newPassword) => {
 
 // Export the PocketBase instance for direct use if needed
 export default pb;
+
+export const getUserFavorites = async (page) => {
+  try {
+    if (!pb.authStore.isValid || !pb.authStore.model) return [];
+    const userId = pb.authStore.model.id;
+    const list = await pb.collection("favs").getFullList({ filter: `user = "${userId}"`, sort: "-created" });
+    const mapped = list.map((r) => ({
+      id: r.id,
+      itemKey: r.itemKey,
+      page: r.page || r.source,
+      name: r.name,
+      link: r.link,
+      img: r.img,
+      user: r.user,
+    }));
+    if (!page) return mapped;
+    return mapped.filter((r) => r.page === page);
+  } catch (e) {
+    return [];
+  }
+};
+
+export const addUserFavorite = async ({ itemKey, page, name, link, img }) => {
+  try {
+    if (!pb.authStore.isValid || !pb.authStore.model) return null;
+    const userId = pb.authStore.model.id;
+    const record = await pb.collection("favs").create({
+      user: userId,
+      itemKey,
+      page,
+      name,
+      link,
+      img,
+    });
+    return record;
+  } catch (e) {
+    return null;
+  }
+};
+
+export const removeUserFavorite = async (itemKey, page) => {
+  try {
+    if (!pb.authStore.isValid || !pb.authStore.model) return false;
+    const userId = pb.authStore.model.id;
+    const list = await pb.collection("favs").getFullList({ filter: `user = "${userId}" && itemKey = "${itemKey}"`, limit: 10 });
+    const target = page ? (list.find((r) => (r.page || r.source) === page)) : list[0];
+    if (target) {
+      await pb.collection("favs").delete(target.id);
+      return true;
+    }
+    return false;
+  } catch (e) {
+    return false;
+  }
+};

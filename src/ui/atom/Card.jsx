@@ -19,7 +19,7 @@ const priceIcon = (p) => {
   return { name: "money", cls: "price-other" };
 };
 
-const Card = ({ item, href, imgSrc, img, baseLogoPath = "/assets/cards_logo/", name, description, platforms, platform, price, tags }) => {
+const Card = ({ item, href, imgSrc, img, baseLogoPath = "/assets/cards_logo/", name, description, platforms, platform, price, tags, isFav, onToggleFav, itemKey }) => {
   const data = item || {};
   const finalHref = href || data.link || "#";
   const rawImg = img || data.img || "";
@@ -34,6 +34,9 @@ const Card = ({ item, href, imgSrc, img, baseLogoPath = "/assets/cards_logo/", n
 
   return (
     <a href={finalHref} className="tool-card" target="_blank" rel="noopener noreferrer">
+      <button type="button" className={`fav-btn ${isFav ? 'on' : 'off'}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); onToggleFav && onToggleFav({ itemKey: itemKey || finalHref, item: data, isFav }); }}>
+        <SvgIcn Name={isFav ? "fav_on" : "fav_non"} />
+      </button>
       <div className="tool-logo">
         {finalImgSrc ? (
           <img src={finalImgSrc} alt={finalName} loading="lazy" onError={(e) => { e.currentTarget.style.display = "none"; e.currentTarget.nextSibling.style.display = "flex"; }} />
