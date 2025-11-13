@@ -10,6 +10,7 @@ const MenuDropdown = ({
   onOpenChange,
   defaultOpen = false,
   open: controlledOpen,
+  onTriggerClick,
 }) => {
   const [open, setOpen] = useState(defaultOpen);
   const rootRef = useRef(null);
@@ -74,9 +75,9 @@ const MenuDropdown = ({
       <div
         className="menu-trigger"
         onClick={(e) => {
-          // Prevent default if trigger contains an anchor to avoid page jump
           e.preventDefault();
           e.stopPropagation();
+          if (onTriggerClick) { onTriggerClick(e); return; }
           toggleOpen();
         }}
       >

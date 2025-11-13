@@ -85,13 +85,14 @@
   box-sizing: border-box;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.04);
   position: relative;
+  transition: all 0.2s ease;
 
-}
-
-.tool-card:hover {
+&:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border-color: $G_04;
+  transition: all 0.2s ease;
+}
 }
 
 .tool-logo {

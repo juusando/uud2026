@@ -95,7 +95,7 @@ const FilterSideBar = ({ items = [], onChange, className = "", showSearch = true
       const matchesPrice = pr.length === 0 ? true : pr.some((p) => price.includes(normalize(p)));
       return matchesQuery && matchesTag && matchesPlatform && matchesPrice;
     });
-  }, [items, query, tag, platforms, prices]);
+  }, [items, query, tag, platforms, prices, favoritesSet]);
 
   useEffect(() => { if (onChange) onChange(filtered); }, [filtered, onChange]);
 
@@ -143,6 +143,11 @@ const FilterSideBar = ({ items = [], onChange, className = "", showSearch = true
           <div className="chips">
             {uniqueTags.map((t) => (
               <button key={t} className={`chip ${tag === t ? "selected" : ""}`} onClick={() => setTag(t)}>
+                {(t === "All" || t === "Favs") && (
+                  <span className="chip-left-icon">
+                    <SvgIcn Name={t === "All" ? "apps" : "fav_on"} />
+                  </span>
+                )}
                 <span>{t}</span>
                 {t === "Favs" && favoritesSet && (
                   <span className="fav-count">{favoritesSet.size}</span>

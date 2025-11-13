@@ -1,13 +1,15 @@
 import "../styles/atom.scss";
 import "../styles/auth.scss";
+import "../styles/cards.scss";
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import CountryFlag from "../data/IconCountry";
 import countriesData from "../data/countries.json";
-import pb, { getAvatarBlob, logoutUser } from "../services/pocketbase";
+import pb, { getAvatarBlob, logoutUser, getUserFavorites, addUserFavorite, removeUserFavorite } from "../services/pocketbase";
 import Button from "../ui/atom/Button";
 import { useNavigate } from "react-router-dom";
 import Header from "../ui/compo/Header.jsx";
+import CardsGrid from "../ui/compo/CardsGrid.jsx";
 
 const PublicUser = () => {
   const { username } = useParams();
@@ -15,6 +17,9 @@ const PublicUser = () => {
   const [user, setUser] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [status, setStatus] = useState("");
+  const [favSet, setFavSet] = useState(new Set());
+  const [favItems, setFavItems] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const loadUser = async () => {
@@ -44,6 +49,98 @@ const PublicUser = () => {
     };
     if (username) loadUser();
   }, [username]);
+
+  const parseCSV = (text) => {
+    const lines = text.split(/\r?\n/).filter((l) => l.trim().length > 0);
+    if (lines.length === 0) return [];
+    const headers = parseCSVLine(lines[0]);
+    const rows = [];
+    for (let i = 1; i < lines.length; i++) {
+      const cols = parseCSVLine(lines[i]);
+      if (!cols || cols.length === 0) continue;
+      const obj = {};
+      for (let j = 0; j < headers.length; j++) {
+        obj[headers[j]] = cols[j] ?? "";
+      }
+      rows.push(obj);
+    }
+    return rows;
+  };
+
+  const parseCSVLine = (line) => {
+    const result = [];
+    let current = "";
+    let inQuotes = false;
+    let quoteChar = null;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (!inQuotes && (ch === '"' || ch === '`')) { inQuotes = true; quoteChar = ch; continue; }
+      if (inQuotes && ch === quoteChar) {
+        const next = line[i + 1];
+        if (next === quoteChar) { current += quoteChar; i++; } else { inQuotes = false; quoteChar = null; }
+        continue;
+      }
+      if (!inQuotes && ch === ",") { result.push(current.trim()); current = ""; } else { current += ch; }
+    }
+    result.push(current.trim());
+    return result;
+  };
+
+  const getKey = (it) => it.link || it.name || it.img;
+
+  useEffect(() => {
+    const loadFavs = async () => {
+      try {
+        const favs = await getUserFavorites();
+        const keys = new Set(favs.map((f) => f.itemKey));
+        setFavSet(keys);
+        const pageSet = new Set(favs.map((f) => f.page).filter(Boolean));
+        const pages = pageSet.size > 0 ? Array.from(pageSet) : ["tools", "resos", "ideaz"];
+        const pageToCsv = { tools: "/tools.csv", resos: "/resos.csv", ideaz: "/Ideaz.csv" };
+        const allItems = [];
+        for (const p of pages) {
+          const path = pageToCsv[p];
+          if (!path) continue;
+          const res = await fetch(path);
+          const txt = await res.text();
+          const rows = parseCSV(txt);
+          const mapped = rows.map((r) => ({
+            img: r.img || "",
+            name: r.name || "",
+            link: r.link || "",
+            engDescription: r.engDescription || r.description || "",
+            tags: r.tags || "",
+            filterTag: r.filterTag || "",
+            platform: r.platform || "",
+            price: r.price || "",
+            _page: p,
+          }));
+          allItems.push(...mapped);
+        }
+        const favOnly = allItems.filter((it) => keys.has(getKey(it)));
+        setFavItems(favOnly);
+      } catch (_) {
+        setError("Failed to load favorites");
+      }
+    };
+    if (user) loadFavs();
+  }, [user]);
+
+  const toggleFav = async ({ itemKey, item, isFav }) => {
+    const key = itemKey || getKey(item);
+    setFavSet((prev) => {
+      const next = new Set(prev);
+      if (isFav) next.delete(key); else next.add(key);
+      return next;
+    });
+    const page = item?._page;
+    if (isFav) {
+      await removeUserFavorite(key, page);
+      setFavItems((list) => list.filter((it) => getKey(it) !== key));
+    } else {
+      await addUserFavorite({ itemKey: key, page });
+    }
+  };
 
   const countryIso = useMemo(() => {
     if (!user?.country) return null;
@@ -125,9 +222,9 @@ const PublicUser = () => {
             />
           </div>
         </div>
-        <div className="content-box">
-          USER FAVED CARDS
-          </div>
+  
+          <CardsGrid items={favItems} error={error} totalCount={favItems.length} favoritesSet={favSet} onToggleFav={toggleFav} getKey={getKey} />
+      
       </div>
     </>
   );

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../ui/atom/Button";
 import MenuDropdown from "../../ui/atom/MenuDropdown";
 import pb, { getCurrentUser, isAuthenticated, getAvatarBlob, logoutUser } from "../../services/pocketbase";
@@ -8,6 +9,7 @@ import SvgIcn from "../../data/IconCompo";
 const Header = () => {
   const [user, setUser] = useState(getCurrentUser());
   const [avatarUrl, setAvatarUrl] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setUser(getCurrentUser());
@@ -60,6 +62,7 @@ const Header = () => {
               ) : (
                 <Button className="nav-btn" iconL="user_circle"/>
               )}
+              onTriggerClick={() => { if (user?.username) navigate(`/${user.username}`); }}
               items={[
                 { label: "My Card", iconR: "account", to: "/home" },
                 { label: "Setting", iconR: "setting", to: "/home" },
