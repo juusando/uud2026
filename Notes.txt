@@ -9,3 +9,5 @@ npx nodemon
     "exec": "cd src && cd data && node IconGener.js"
   }
   
+
+  cd src && cd data && node IconGener.js

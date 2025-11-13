@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import "../../styles/atom.scss";
 import SvgIcn from "../../data/IconCompo";
-import { Link } from "react-router-dom";
 
 const MenuDropdown = ({
   trigger,
@@ -47,33 +46,24 @@ const MenuDropdown = ({
     if (onOpenChange) onOpenChange(false);
   }, [onOpenChange]);
 
-  const isExternal = (url) => /^(https?:|mailto:|tel:)/.test(url);
-
   const menuItems = useMemo(() => {
     return items.map((item, idx) => {
       const href = item.href || item.to || "#";
-      const content = (
-        <>
-          {item.iconR && (
-            <span className="iconR">
-              <SvgIcn Name={item.iconR} />
-            </span>
-          )}
-          <span className="label">{item.label}</span>
-          {item.icon && !item.iconR && (
-            <span className="icon">
-              <SvgIcn Name={item.icon} />
-            </span>
-          )}
-        </>
-      );
       return (
         <li key={idx} className={`menu-item ${item.disabled ? "disabled" : ""}`}>
-          {item.to && !isExternal(href) ? (
-            <Link to={item.to} onClick={(e) => handleItemClick(item, e)}>{content}</Link>
-          ) : (
-            <a href={href} onClick={(e) => handleItemClick(item, e)}>{content}</a>
-          )}
+          <a href={href} onClick={(e) => handleItemClick(item, e)}>
+            {item.iconR && (
+              <span className="iconR">
+                <SvgIcn Name={item.iconR} />
+              </span>
+            )}
+            <span className="label">{item.label}</span>
+            {item.icon && !item.iconR && (
+              <span className="icon">
+                <SvgIcn Name={item.icon} />
+              </span>
+            )}
+          </a>
         </li>
       );
     });

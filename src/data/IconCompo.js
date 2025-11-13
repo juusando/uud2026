@@ -187,6 +187,7 @@ import { ReactComponent as new_password } from '../assets/icons/new_password.svg
 import { ReactComponent as news } from '../assets/icons/news.svg';
 import { ReactComponent as newsletter } from '../assets/icons/newsletter.svg';
 import { ReactComponent as newz } from '../assets/icons/newz.svg';
+import { ReactComponent as no_data } from '../assets/icons/no_data.svg';
 import { ReactComponent as no_item } from '../assets/icons/no_item.svg';
 import { ReactComponent as norif_off } from '../assets/icons/norif_off.svg';
 import { ReactComponent as norif_on } from '../assets/icons/norif_on.svg';
@@ -495,6 +496,7 @@ const iconComponents = {
   'news': news,
   'newsletter': newsletter,
   'newz': newz,
+  'no_data': no_data,
   'no_item': no_item,
   'norif_off': norif_off,
   'norif_on': norif_on,

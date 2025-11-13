@@ -6,6 +6,7 @@ import Header from "../ui/compo/Header.jsx";
 import Card from "../ui/atom/Card.jsx";
 import FilterSideBar from "../ui/compo/FilterSideBar.jsx";
 import SvgIcn from "../data/IconCompo";
+import CardsGrid from "../ui/compo/CardsGrid.jsx";
 
 const parseCSV = (text) => {
   const lines = text.split(/\r?\n/).filter((l) => l.trim().length > 0);
@@ -87,6 +88,17 @@ const Ideaz = () => {
     return () => observer.disconnect();
   }, [filtered.length]);
 
+  useEffect(() => {
+    const onScroll = () => {
+      const nearBottom = window.innerHeight + window.scrollY >= (document.body.offsetHeight - 200);
+      if (nearBottom) {
+        setVisibleCount((c) => Math.min(c + 60, filtered.length));
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [filtered.length]);
+
   const visibleItems = useMemo(() => filtered.slice(0, visibleCount), [filtered, visibleCount]);
 
   return (
@@ -94,18 +106,7 @@ const Ideaz = () => {
       <Header />
       <div className="tools-layout">
         <FilterSideBar items={items} onChange={setFiltered} title="IDEAZ" logoIcon="idea" showPlatform={false} showPrice={false} />
-        <div className={`cards-grid ${!error && visibleItems.length === 0 ? 'empty' : ''}`}>
-          {error && <div className="status status--error">{error}</div>}
-          {(!error && visibleItems.length === 0) ? (
-            <div className="empty-state">
-              <div className="empty-icon"><SvgIcn Name="no_item" /></div>
-            </div>
-          ) : (
-            visibleItems.map((it, idx) => (
-              <Card key={idx} item={it} />
-            ))
-          )}
-        </div>
+        <CardsGrid items={visibleItems} error={error} totalCount={filtered.length} />
         <div ref={sentinelRef} className="tools-sentinel" />
       </div>
     </div>

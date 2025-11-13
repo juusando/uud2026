@@ -1,7 +1,6 @@
 import "../../styles/atom.scss";
 import SvgIcn from "../../data/IconCompo";
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const Button = ({ iconL, iconR, hoverL, hoverR, children, className, to, onClick, type, disabled }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -13,42 +12,14 @@ const Button = ({ iconL, iconR, hoverL, hoverR, children, className, to, onClick
     }
   };
 
-  if (type) {
-    return (
-      <button
-        type={type}
-        disabled={disabled}
-        className={`button ${className || ''} ${disabled ? 'disabled' : ''}`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onClick={handleClick}
-      >
-        {iconL && <SvgIcn Name={isHovered && hoverL ? hoverL : iconL} className="svg-icon" />}
-        {children}
-        {iconR && <SvgIcn Name={isHovered && hoverR ? hoverR : iconR} className="svg-icon" />}
-      </button>
-    );
-  }
-
-  if (to) {
-    return (
-      <Link
-        to={to}
-        className={`button ${className || ''} ${disabled ? 'disabled' : ''}`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onClick={handleClick}
-      >
-        {iconL && <SvgIcn Name={isHovered && hoverL ? hoverL : iconL} className="svg-icon" />}
-        {children}
-        {iconR && <SvgIcn Name={isHovered && hoverR ? hoverR : iconR} className="svg-icon" />}
-      </Link>
-    );
-  }
-
+  // Use button element if type is provided, otherwise use anchor
+  const Element = type ? 'button' : 'a';
+  
   return (
-    <a
-      href="#"
+    <Element
+      href={!type ? (to || '#') : undefined}
+      type={type}
+      disabled={disabled}
       className={`button ${className || ''} ${disabled ? 'disabled' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -57,7 +28,7 @@ const Button = ({ iconL, iconR, hoverL, hoverR, children, className, to, onClick
       {iconL && <SvgIcn Name={isHovered && hoverL ? hoverL : iconL} className="svg-icon" />}
       {children}
       {iconR && <SvgIcn Name={isHovered && hoverR ? hoverR : iconR} className="svg-icon" />}
-    </a>
+    </Element>
   );
 };
 
