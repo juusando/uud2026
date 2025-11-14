@@ -158,7 +158,7 @@ const FilterSideBar = ({ items = [], onChange, className = "", showSearch = true
               <button key={t} className={`chip ${tag === t ? "selected" : ""}`} onClick={() => setTag(t)}>
                 {(t === "All" || t === "Favs") && (
                   <span className="chip-left-icon">
-                    <SvgIcn Name={t === "All" ? "apps" : "fav_on"} />
+                    <SvgIcn Name={t === "All" ? "dots_on" : "fav"} />
                   </span>
                 )}
                 <span>{t}</span>

@@ -22,8 +22,8 @@ const CardsGrid = ({ items = [], error = "", totalCount = 0, className = "", fav
       )}
       {showEndState && (
         <div className="end-state">
-          <div className="end-icon"><SvgIcn Name="stop" /></div>
-          <div className="end-text">No more items</div>
+          <div className="end-icon"><SvgIcn Name="no_data" /></div>
+          {/* <div className="end-text">No more items</div> */}
         </div>
       )}
     </div>

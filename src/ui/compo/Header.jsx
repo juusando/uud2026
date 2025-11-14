@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Button from "../../ui/atom/Button";
 import pb, { getCurrentUser, isAuthenticated, getAvatarBlob, logoutUser } from "../../services/pocketbase";
 import "../../styles/compo.scss";
@@ -36,6 +36,8 @@ const Header = () => {
   }, [user]);
 
   const loggedIn = isAuthenticated();
+  const location = useLocation();
+  const isActive = (p) => location.pathname.startsWith(p);
 
   return (
     <header className="uud-header">
@@ -46,11 +48,11 @@ const Header = () => {
         </Button>
       
       <nav className="center-header">
-        <Button className="nav-btn" iconL="tool" to="/tools">Tools</Button>
-        <Button className="nav-btn" iconL="resos" to="/resos">Resos</Button>
-        <Button className="nav-btn" iconL="idea" to="/ideaz">Ideaz</Button>
-        <Button className="nav-btn" iconL="apps" to="/apps">Apps</Button>
-        <Button className="nav-btn" iconL="talx" to="/talx">Talx</Button>
+        <Button className={`nav-btn ${isActive('/tools') ? 'active' : ''}`} iconL="tool" to="/tools">Tools</Button>
+        <Button className={`nav-btn ${isActive('/resos') ? 'active' : ''}`} iconL="resos" to="/resos">Resos</Button>
+        <Button className={`nav-btn ${isActive('/ideaz') ? 'active' : ''}`} iconL="idea" to="/ideaz">Ideaz</Button>
+        <Button className={`nav-btn ${isActive('/apps') ? 'active' : ''}`} iconL="apps" to="/apps">Apps</Button>
+        <Button className={`nav-btn ${isActive('/talx') ? 'active' : ''}`} iconL="talx" to="/talx">Talx</Button>
       </nav>
       <div className="right-header">
         {loggedIn ? (

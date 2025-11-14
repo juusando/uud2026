@@ -341,14 +341,14 @@
 .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px 5px;
 
   .chip {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 4px;
-    height: 38px;
+    height: 32px;
     padding: 0 8px;
     border-radius: 8px;
     background: $White;
@@ -374,7 +374,7 @@
     justify-content: center;
 
       svg{
-        width: 22px;
+        width: 18px;
       }
     }
 
