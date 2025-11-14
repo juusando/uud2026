@@ -91,10 +91,9 @@ const PublicUser = () => {
   useEffect(() => {
     const loadFavs = async () => {
       try {
-        const favs = await getUserFavorites();
-        const keys = new Set(favs.map((f) => f.itemKey));
-        setFavSet(keys);
-        const pageSet = new Set(favs.map((f) => f.page).filter(Boolean));
+        const targetFavs = await getUserFavorites(undefined, user.id);
+        const targetKeys = new Set(targetFavs.map((f) => f.itemKey));
+        const pageSet = new Set(targetFavs.map((f) => f.page).filter(Boolean));
         const pages = pageSet.size > 0 ? Array.from(pageSet) : ["tools", "resos", "ideaz"];
         const pageToCsv = { tools: "/tools.csv", resos: "/resos.csv", ideaz: "/Ideaz.csv" };
         const allItems = [];
@@ -117,8 +116,12 @@ const PublicUser = () => {
           }));
           allItems.push(...mapped);
         }
-        const favOnly = allItems.filter((it) => keys.has(getKey(it)));
+        const favOnly = allItems.filter((it) => targetKeys.has(getKey(it)));
         setFavItems(favOnly);
+
+        const myFavs = await getUserFavorites();
+        const myKeys = new Set(myFavs.map((f) => f.itemKey));
+        setFavSet(myKeys);
       } catch (_) {
         setError("Failed to load favorites");
       }
@@ -128,6 +131,7 @@ const PublicUser = () => {
 
   const toggleFav = async ({ itemKey, item, isFav }) => {
     const key = itemKey || getKey(item);
+    const isMe = pb.authStore?.model && user && (pb.authStore.model.id === user.id);
     setFavSet((prev) => {
       const next = new Set(prev);
       if (isFav) next.delete(key); else next.add(key);
@@ -136,7 +140,9 @@ const PublicUser = () => {
     const page = item?._page;
     if (isFav) {
       await removeUserFavorite(key, page);
-      setFavItems((list) => list.filter((it) => getKey(it) !== key));
+      if (isMe) {
+        setFavItems((list) => list.filter((it) => getKey(it) !== key));
+      }
     } else {
       await addUserFavorite({ itemKey: key, page });
     }

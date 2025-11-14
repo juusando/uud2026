@@ -10,7 +10,7 @@ import Popup from "../ui/atom/Popup";
 import CountryDropDown from "../ui/atom/CountryDropDown";
 import DropdownInput from "../ui/atom/DropDown";
 import TextArea from "../ui/atom/Textarea";
-import pb, { getCurrentUser, isAuthenticated, updateUser, updatePassword, requestEmailChange } from "../services/pocketbase";
+import pb, { getCurrentUser, isAuthenticated, updateUser, updatePassword, requestEmailChange, getUserAvatarUrl } from "../services/pocketbase";
 import Header from "../ui/compo/Header.jsx";
 
 const Setting = () => {
@@ -26,8 +26,10 @@ const Setting = () => {
     word: "",
     avatar: null,
     avatarPreview: null,
+    email: "",
+    currentEmail: "",
   });
-  const [passwordData, setPasswordData] = useState({ oldPassword: "", newPassword: "", confirmPassword: "" });
+  const [passwordData, setPasswordData] = useState({ oldPassword: "", newPassword: "" });
   const [deletePopup, setDeletePopup] = useState(false);
 
   useEffect(() => {
@@ -44,7 +46,9 @@ const Setting = () => {
         role: user.role || "",
         word: user.word || "",
         avatar: null,
-        avatarPreview: user?.avatarUrl || "",
+        avatarPreview: getUserAvatarUrl(user, user?.photo) || "",
+        email: "",
+        currentEmail: user.email || "",
       });
     }
   }, [navigate]);
@@ -55,7 +59,10 @@ const Setting = () => {
   };
 
   const handleEditPhotoSelect = (file) => {
-    if (!file) return;
+    if (!file) {
+      setEditData((prev) => ({ ...prev, avatar: null, avatarPreview: "" }));
+      return;
+    }
     const previewUrl = URL.createObjectURL(file);
     setEditData((prev) => ({ ...prev, avatar: file, avatarPreview: previewUrl }));
   };
@@ -65,14 +72,15 @@ const Setting = () => {
     setLoading(true);
     setStatus("Saving profile...");
     setStatusType("info");
-    const data = new FormData();
-    data.append("name", editData.name);
-    data.append("username", editData.username);
-    data.append("country", editData.country);
-    data.append("role", editData.role);
-    data.append("word", editData.word || "");
-    if (editData.avatar) data.append("photo", editData.avatar);
-    const result = await updateUser(pb.authStore.model.id, data);
+    const result = await updateUser(pb.authStore.model.id, {
+      name: editData.name,
+      username: editData.username,
+      country: editData.country,
+      role: editData.role,
+      word: editData.word || "",
+      avatarFile: editData.avatar || null,
+      removePhoto: editData.avatar === null && !editData.avatarPreview,
+    });
     if (result.success) {
       setStatus("Profile updated successfully!");
       setStatusType("success");
@@ -90,17 +98,17 @@ const Setting = () => {
 
   const handleSavePassword = async (e) => {
     e.preventDefault();
-    if (!passwordData.oldPassword || !passwordData.newPassword || passwordData.newPassword !== passwordData.confirmPassword) {
-      setStatus("Check password fields and confirmation");
+    if (!passwordData.oldPassword || !passwordData.newPassword) {
+      setStatus("Enter current and new password");
       setStatusType("error");
       return;
     }
     setLoading(true);
-    const result = await updatePassword(passwordData.oldPassword, passwordData.newPassword);
+    const result = await updatePassword(pb.authStore.model.id, passwordData.oldPassword, passwordData.newPassword);
     if (result.success) {
       setStatus("Password updated successfully!");
       setStatusType("success");
-      setPasswordData({ oldPassword: "", newPassword: "", confirmPassword: "" });
+      setPasswordData({ oldPassword: "", newPassword: "" });
     } else {
       setStatus(`Password update failed: ${result.error}`);
       setStatusType("error");
@@ -153,14 +161,17 @@ const Setting = () => {
       </form>
 
       <form onSubmit={(e) => handleRequestEmailChange(e, editData.email)} className="auth-form">
+        <div className="profile-field">
+          <div className="input-label">Current Email</div>
+          <div>{editData.currentEmail || ""}</div>
+        </div>
         <Input label="New Email" name="email" type="email" value={editData.email || ""} onChange={(e) => setEditData(prev => ({ ...prev, email: e.target.value }))} placeholder="Enter new email" iconL="mail" />
-        <Button type="submit" disabled={loading} iconR="mail">Request Email Change</Button>
+        <Button type="submit" disabled={loading} iconR="mail">Request Email fix setting</Button>
       </form>
 
       <form onSubmit={handleSavePassword} className="auth-form">
         <Input label="Current Password" name="oldPassword" type="password" value={passwordData.oldPassword} onChange={handlePasswordInputChange} placeholder="Enter current password" iconL="password" />
         <Input label="New Password" name="newPassword" type="password" value={passwordData.newPassword} onChange={handlePasswordInputChange} placeholder="Enter new password" iconL="password" />
-        <Input label="Confirm New Password" name="confirmPassword" type="password" value={passwordData.confirmPassword} onChange={handlePasswordInputChange} placeholder="Confirm new password" iconL="password" />
         <Button type="submit" disabled={loading} iconR="save">Update Password</Button>
       </form>
 

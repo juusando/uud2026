@@ -253,56 +253,30 @@ export const updateUser = async (userId, updateData) => {
     // Note: email cannot be updated directly - use requestEmailChange instead
     const allowedFields = ["name", "username", "country", "role", "word"];
 
-    // Prepare form data for file upload
-    const formData = new FormData();
-
-    // Add only allowed regular fields with validation
+    const regularUpdates = {};
     allowedFields.forEach((field) => {
       if (updateData[field] !== undefined && updateData[field] !== null) {
         const value = updateData[field].toString().trim();
         if (value) {
-          // Only add non-empty values
-          console.log(`Adding field: ${field} = ${value}`);
-          formData.append(field, value);
+          regularUpdates[field] = value;
         }
       }
     });
 
-    // Handle avatar/photo file upload separately
+    let updatedUser;
     if (updateData.avatarFile && updateData.avatarFile instanceof File) {
-      console.log(
-        "Adding new avatar file:",
-        updateData.avatarFile.name,
-        updateData.avatarFile.size,
-      );
-      // Use 'photo' field to match PocketBase schema
+      const formData = new FormData();
+      Object.entries(regularUpdates).forEach(([k, v]) => formData.append(k, v));
       formData.append("photo", updateData.avatarFile);
-    }
-
-    // Log FormData contents for debugging
-    console.log("=== FormData Contents ===");
-    for (let [key, value] of formData.entries()) {
-      if (value instanceof File) {
-        console.log(`${key}: [FILE] ${value.name} (${value.size} bytes)`);
-      } else {
-        console.log(`${key}: ${value}`);
+      updatedUser = await pb.collection("users").update(userId, formData);
+    } else if (updateData.removePhoto) {
+      updatedUser = await pb.collection("users").update(userId, { ...regularUpdates, photo: null });
+    } else {
+      if (Object.keys(regularUpdates).length === 0) {
+        return { success: false, error: "No valid fields provided for update" };
       }
+      updatedUser = await pb.collection("users").update(userId, regularUpdates);
     }
-
-    // Validate that we have at least one field to update
-    let hasFields = false;
-    for (let [key, value] of formData.entries()) {
-      hasFields = true;
-      break;
-    }
-
-    if (!hasFields) {
-      console.warn("No valid fields to update");
-      return { success: false, error: "No valid fields provided for update" };
-    }
-
-    // Update the user record
-    const updatedUser = await pb.collection("users").update(userId, formData);
 
     console.log("User profile updated successfully:", updatedUser);
     return { success: true, data: updatedUser };
@@ -484,10 +458,10 @@ export const updatePassword = async (userId, oldPassword, newPassword) => {
 // Export the PocketBase instance for direct use if needed
 export default pb;
 
-export const getUserFavorites = async (page) => {
+export const getUserFavorites = async (page, userIdParam) => {
   try {
-    if (!pb.authStore.isValid || !pb.authStore.model) return [];
-    const userId = pb.authStore.model.id;
+    const userId = userIdParam || (pb.authStore.isValid && pb.authStore.model ? pb.authStore.model.id : null);
+    if (!userId) return [];
     const list = await pb.collection("favs").getFullList({ filter: `user = "${userId}"`, sort: "-created" });
     const mapped = list.map((r) => ({
       id: r.id,
