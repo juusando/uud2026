@@ -10,6 +10,7 @@ import CountryDropDown from "../ui/atom/CountryDropDown";
 import DropdownInput from "../ui/atom/DropDown";
 import TextArea from "../ui/atom/Textarea";
 import { registerUser, isAuthenticated, getCurrentUser } from "../services/pocketbase";
+import Header from "../ui/compo/Header.jsx";
 
 const Signup = () => {
   const [status, setStatus] = useState("");
@@ -81,6 +82,8 @@ const Signup = () => {
   };
 
   return (
+    <>
+    <Header />
     <div className="main_box">
       {status && (
         <Alert message={status} type={statusType} isVisible={true} onClose={() => setStatus("")} />
@@ -105,6 +108,7 @@ const Signup = () => {
         <Button type="submit" disabled={loading} iconR="signup">{loading ? "Creating Account..." : "Signup"}</Button>
       </form>
     </div>
+    </>
   );
 };
 
