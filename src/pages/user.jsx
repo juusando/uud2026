@@ -9,7 +9,9 @@ import pb, { getAvatarBlob, logoutUser, getUserFavorites, addUserFavorite, remov
 import Button from "../ui/atom/Button";
 import { useNavigate } from "react-router-dom";
 import Header from "../ui/compo/Header.jsx";
+import UserSidebar from "../ui/compo/UserSidebar.jsx";
 import CardsGrid from "../ui/compo/CardsGrid.jsx";
+import SvgIcn from "../data/IconCompo.js";
 
 const PublicUser = () => {
   const { username } = useParams();
@@ -173,96 +175,51 @@ const PublicUser = () => {
   return (
     <>
       <Header />
+
       <div className="layout-hero">
-        <div className="sidebar">
-          <div className="profile-field">
-            <div>
-              {avatarUrl ? (
-                <img
-                  src={avatarUrl}
-                  alt="User Profile"
-                  className="profile-avatar"
-                  onError={(e) => {
-                    e.target.style.display = "none";
-                    e.target.nextSibling.style.display = "flex";
-                  }}
-                />
-              ) : null}
-              <div
-                className="profile-avatar-fallback"
-                style={{ display: avatarUrl ? "none" : "flex" }}
-              >
-                No Photo
-                <br />
-                Uploaded
-              </div>
-            </div>
-          </div>
 
-          <div className="profile-field">
-            <span>{user.name || "Not provided"}</span>
-          </div>
-          <div className="profile-field">
-            <span>@{user.username}</span>
-          </div>
-          <div className="profile-field word">
-            <span>{user.word || "Not provided"}</span>
-          </div>
-          <div className="profile-field">
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              {countryIso && (
-                <CountryFlag
-                  Name={countryIso.toLowerCase()}
-                  style={{ width: 32, height: 32, borderRadius: "50%" }}
-                />
-              )}
-              <span>{(user.country || "Not provided").slice(0, 16)}</span>
-            </div>
-          </div>
-          <div className="profile-field">
-            <span>{user.role || "Not provided"}</span>
-          </div>
+        <UserSidebar
+          user={user}
+          avatarUrl={avatarUrl}
+          countryIso={countryIso}
+          favCount={favItems.length}
+          isOwner={pb.authStore?.model && pb.authStore.model.id === user.id}
+          onSettingsClick={() => navigate(`/setting`)}
+          onLogoutClick={() => { logoutUser(); navigate('/'); }}
+        />
 
-          <div className="button-box">
-            <Button
-              onClick={() => navigate(`/setting`)}
-              type="button"
-              iconL="setting"
-              className="nav-btn"
-            />
-            <Button
-              onClick={() => { logoutUser(); navigate('/'); }}
-              type="button"
-              iconL="logout"
-              className="nav-btn"
-            />
-          </div>
-        </div>
-  
-          <div className="content-box" style={{ width: "100%" }}>
-            {(["tools", "resos", "ideaz"]).map((p) => (
-              favByPage[p].length > 0 ? (
-                <div key={p} className={`fav-section fav-${p}`}>
-                  <div className="section-head">
-                    <div className="section-title">{p.toUpperCase()}</div>
-                    <span className="total">{favByPage[p].length}</span>
-                  </div>
-                  <CardsGrid
-                    items={favByPage[p]}
-                    error={error}
-                    totalCount={favByPage[p].length}
-                    favoritesSet={favSet}
-                    onToggleFav={toggleFav}
-                    getKey={getKey}
-                  />
+        {/* - - - - - - - - - - - - - - - - - - - - - - - - */}
+
+        <div className="content-box" style={{ width: "100%" }}>
+          {(["tools", "resos", "ideaz"]).map((p) => (
+            favByPage[p].length > 0 ? (
+              <div key={p} className={`fav-section fav-${p}`}>
+                <div className="section-head">
+                  <div className="section-title">{p.toUpperCase()}</div>
+                  <span className="total">{favByPage[p].length}</span>
                 </div>
-              ) : null
-            ))}
-          </div>
-      
+                <CardsGrid
+                  items={favByPage[p]}
+                  error={error}
+                  totalCount={favByPage[p].length}
+                  favoritesSet={favSet}
+                  onToggleFav={toggleFav}
+                  getKey={getKey}
+                />
+              </div>
+            ) : null
+          ))}
+        </div>
+
       </div>
     </>
   );
 };
 
 export default PublicUser;
+
+
+
+
+
+

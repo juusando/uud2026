@@ -27,6 +27,8 @@ const HomeComponent = React.lazy(() => import(`../pages/home.jsx`));
 const VerifyEmailComponent = React.lazy(() => import(`../verify.jsx`));
 // Public user profile by username
 const PublicUserComponent = React.lazy(() => import(`../pages/user.jsx`));
+// Admin page
+const AdminComponent = React.lazy(() => import(`../pages/admin.jsx`));
 
 // Create routes with dynamic imports for both 'pages' and 'ui' directories
 const pageRoutes = Object.keys(pages).map(page => {
@@ -70,4 +72,13 @@ const verifyRoute = {
 
 // Export both the default route and the dynamically generated routes from 'pages' and 'ui'
 // Note: verifyRoute must come before verifyEmailRoute to match /verify/:token first
-export default [defaultRoute, designSystemRoute, verifyRoute, verifyEmailRoute, ...pageRoutes, ...uiRoutes, { path: '/:username', element: <PublicUserComponent /> }];
+export default [
+  defaultRoute,
+  designSystemRoute,
+  verifyRoute,
+  verifyEmailRoute,
+  { path: '/sa/admin', element: <AdminComponent /> },
+  ...pageRoutes,
+  ...uiRoutes,
+  { path: '/:username', element: <PublicUserComponent /> }
+];
