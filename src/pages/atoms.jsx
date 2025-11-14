@@ -15,7 +15,6 @@ import PhotoUploader from "../ui/atom/PhotoUploader";
 import { AlertProvider, useAlert } from "../ui/atom/Alert";
 import { useState } from "react";
 import MenuDropdown from "../ui/atom/MenuDropdown";
-import Header from "../ui/compo/Header.jsx";
 
 // Wrap the Atoms component with AlertProvider
 const AtomsWithAlerts = () => {
@@ -41,7 +40,6 @@ function Atoms() {
 
   return (
     <>
-      <Header />
       
       <div className="home">
         <div className="page-title">

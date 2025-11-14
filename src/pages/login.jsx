@@ -6,7 +6,6 @@ import Input from "../ui/atom/Input";
 import Button from "../ui/atom/Button";
 import Alert from "../ui/atom/Alert.jsx";
 import { loginUser, isAuthenticated, getCurrentUser } from "../services/pocketbase";
-import Header from "../ui/compo/Header.jsx";
 
 const Login = () => {
   const [status, setStatus] = useState("");
@@ -53,8 +52,6 @@ const Login = () => {
   };
 
   return (
-    <>
-    <Header />
     <div className="main_box">
       {status && (
         <Alert message={status} type={statusType} isVisible={true} onClose={() => setStatus("")} />
@@ -82,7 +79,6 @@ const Login = () => {
         </Button>
       </form>
     </div>
-    </>
   );
 };
 
