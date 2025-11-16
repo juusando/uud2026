@@ -98,11 +98,11 @@
   }
    .word{
   background-color: $White;
-  padding: 14px 16px 20px;
+  padding: 10px 14px 14px;
   border-radius: 8px;
   text-align: center;
   background-color: $G_01;
-  margin: 16px 0 0;
+  margin: 16px 0;
   font-size: 17px;
 
   span{
@@ -170,20 +170,20 @@
 
  .favs-box{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 0px;
+  gap: 6px;
   background-color: $G_00;
-  padding: 8px 16px;
+  padding: 8px 16px 8px 12px ;
   border-radius: 12px;
   span{
-    font-size: 22px;
+    font-size: 18px;
     color: $Orange;
   }
 
   svg{
-    width: 28px;
+    width: 26px;
     height: 28px;
     stroke-width: 1.5;
   }

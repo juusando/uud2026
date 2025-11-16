@@ -5,7 +5,7 @@ import Button from "../atom/Button";
 
 const UserSidebar = ({ user, avatarUrl, countryIso, favCount, isOwner, onSettingsClick, onLogoutClick }) => {
   return (
-    <div className="user-card">
+    
       <div className="sidebar">
         <div className="profile-field">
           <div>
@@ -51,17 +51,18 @@ const UserSidebar = ({ user, avatarUrl, countryIso, favCount, isOwner, onSetting
           </div>
         </div>
 
-        <div className="profile-field">
-          <span className="word">{user.word || "Not provided"}</span>
-        </div>
-
         <div className="profile-field username">
           <span>@{user.username}</span>
         </div>
 
+        <div className="profile-field">
+          <span className="word">{user.word || "Not provided"}</span>
+        </div>
+
         <div className="favs-box">
           <SvgIcn Name={"fav"} />
-          Favs <span>{favCount}</span>
+          {/* Favs  */}
+          <span>{favCount}</span>
         </div>
 
         {isOwner && (
@@ -86,7 +87,7 @@ const UserSidebar = ({ user, avatarUrl, countryIso, favCount, isOwner, onSetting
           </div>
         )}
       </div>
-    </div>
+ 
   );
 };
 

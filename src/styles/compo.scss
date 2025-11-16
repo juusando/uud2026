@@ -157,7 +157,11 @@
   display: flex;
   align-items: flex-start;
   width: 100%;
-
+ 
+  .user-card{
+    border: 2px solid $Dark;
+  }
+  
   .sidebar {
   display: flex;
   flex-direction: column;
@@ -175,7 +179,6 @@
   align-self: flex-start;
   height: calc(100vh - 96px);
   overflow: hidden;
-  // background-color: aliceblue;
   }
 
   .content-box {
